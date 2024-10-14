@@ -1,4 +1,4 @@
-Authentication / Home page
+Authentication / Home page roadmap !
 
 ****Authentication : ****
 **Sign-up Page : **
@@ -17,10 +17,12 @@ Authentication / Home page
 ****Home Page : ****
 -Log-in Button : helps you to get to the Log-in to connect (user already has an account) (disappears after user connects) 
 -Sign-up Button : helps you to get to the Sign-up menu to Create an account (disappears after user connects)
--Categories Bar : A bar full of categories (men, women, kids, babies...)
+-Categories Bar : A bar full describing the user's categorie (if the user is a man, woman, kid, baby...)
 -Products Search Bar : A search bar for the available products
 -Add to Cart Little Menu : A little menu for the user that shows the added products (the user wishing to buy the products on the list) 
 -Favorite Products List : A list that shows the user's favourit products (more like a wishlist)
 -Account Button : A button that takes us to the user Dashboard (Information about the user)
+
+IMPORTANT NOTE : there might be some modifications or additions in terms of functionalities during the developping process
  
 
