@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Style/Menu.css" />
+    <link rel="stylesheet" href="Style/Product_List.css" />
+    <title>Qashi</title>
+  </head>
+  <body>
+    <script defer src="Script/Menu.js"></script>
+
+    <div class="top-border">
+      <div class="hamburger" onclick="toggleSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <a href="Index.html"><img class="img" src="ICONS/Qashi.png" /></a>
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search..." />
+        <button class="search-button">Search for Product</button>
+      </div>
+      
+
+      <a href="Favorite-items.html">
+        <img
+          class="heart-icon"
+          src="ICONS/heart-button.png"
+        />
+      </a>
+      <img
+        src="ICONS/cart-button.png"
+        class="cart-icon"
+        onclick="toggleCartDropdown()"
+      />
+      <div class="cart-icon">
+        <div class="cart-dropdown" id="cartDropdown">
+          <p>Cart Items :</p>
+          <div class="cart-item">Product 1 <span>$10.00</span></div>
+          <div class="cart-item">Product 2 <span>$15.00</span></div>
+          <div class="cart-item">Product 3 <span>$20.00</span></div>
+          <button id="cart-button" onclick="window.location.href='CheckOut.html';">Go to Checkout</button>
+        </div>
+      </div>
+      <a href="Log-in.html"><img class="account-icon" src="ICONS/Account-button.png" /></a>
+    </div>
+
+    <div class="container">
+      
+      <div class="product-container">
+      <div class="product">
+        <img src="Assets/image-1.png" alt="Product 1" class="product-img" />
+        <h2 class="product-name">Product 1</h2>
+        <p class="product-price">$10.00</p>
+        <button onclick="window.location.href='ProductPage.html';">View Product</button>
+      </div>
+      <div class="product">
+        <img src="Assets/image-1.png" alt="Product 2" class="product-img" />
+        <h2 class="product-name">Product 2</h2>
+        <p class="product-price">$15.00</p>
+        <button onclick="window.location.href='ProductPage.html';">View Product</button>
+      </div>
+      <div class="product">
+        <img src="Assets/image-1.png" alt="Product 3" class="product-img" />
+        <h2 class="product-name">Product 3</h2>
+        <p class="product-price">$20.00</p>
+        <button onclick="window.location.href='ProductPage.html';">View Product</button>
+      </div>
+      <div class="product">
+        <img src="Assets/image-1.png" alt="Product 4" class="product-img" />
+        <h2 class="product-name">Product 4</h2>
+        <p class="product-price">$20.00</p>
+        <button onclick="window.location.href='ProductPage.html';">View Product</button>
+      </div>
+      <div class="product">
+        <img src="Assets/image-1.png" alt="Product 5" class="product-img" />
+        <h2 class="product-name">Product 5</h2>
+        <p class="product-price">$20.00</p>
+        <button onclick="window.location.href='ProductPage.html';">View Product</button>
+      </div>
+      <div class="product">
+        <img src="Assets/image-1.png" alt="Product 4" class="product-img" />
+        <h2 class="product-name">Product 4</h2>
+        <p class="product-price">$20.00</p>
+        <button onclick="window.location.href='ProductPage.html';">View Product</button>
+      </div>
+      <div class="product">
+        <img src="Assets/image-1.png" alt="Product 4" class="product-img" />
+        <h2 class="product-name">Product 4</h2>
+        <p class="product-price">$20.00</p>
+        <button onclick="window.location.href='ProductPage.html';">View Product</button>
+      </div>
+    </div>
+    <!-- Horizontal Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <a href="#">Homme</a>
+      <a href="#">Femme</a>
+      <a href="#">Garcon</a>
+      <a href="#">Fille</a>
+    </div>
+  </body>
+</html>

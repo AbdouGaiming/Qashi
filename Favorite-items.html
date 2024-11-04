@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="Style/Favorite-ItemsStyle.css">
+  <link rel="stylesheet" href="Style/Menu.css">
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.3/css/responsive.dataTables.min.css" />
+  <title>Favorite Items</title>
+
+</head>
+
+<body>
+  <script defer src="Script/Menu.js"></script>
+
+  <div class="top-border">
+    <div class="hamburger" onclick="toggleSidebar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <a href="Index.html"><img class="img" src="ICONS/Qashi.png" /></a>
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="Search..." />
+      <button class="search-button">Search for Product</button>
+    </div>
+    <img class="heart-icon" src="ICONS/heart-button.png"
+      onclick="window.location.href='Favorite-items.html'; return false;" />
+    <img src="ICONS/cart-button.png" class="cart-icon" onclick="toggleCartDropdown()" />
+    <div class="cart-icon">
+      <div class="cart-dropdown" id="cartDropdown">
+        <p>Cart Items :</p>
+        <div class="cart-item">Product 1 <span>$10.00</span></div>
+        <div class="cart-item">Product 2 <span>$15.00</span></div>
+        <div class="cart-item">Product 3 <span>$20.00</span></div>
+        <button id="cart-button" onclick="window.location.href='Checkout.html';">Go to Checkout</button>
+      </div>
+    </div>
+    <a href="Log-in.html"><img class="account-icon" src="ICONS/Account-button.png" /></a>
+  </div>
+
+  <div class="container">
+    <table id="FavTable" class="display">
+      <thead>
+        <tr>
+          <th>Produit ajouté aux favoris :</th>
+          <th>Catégorie :</th>
+          <th>Couleur :</th>
+          <th>Taille/Pointure :</th>
+          <th>Date d'ajout :</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>T-shirt Nirvana</td>
+          <td>Homme</td>
+          <td>Noir</td>
+          <td>L</td>
+          <td>18/10/2024</td>
+        </tr>
+        <tr>
+          <td>Pantalon en jean</td>
+          <td>Homme</td>
+          <td>Bleu</td>
+          <td>34-36</td>
+          <td>18/10/2024</td>
+        </tr>
+        <tr>
+          <td>Sneakers Converse</td>
+          <td>Femme</td>
+          <td>Blanc</td>
+          <td>39</td>
+          <td>15/09/2024</td>
+        </tr>
+        <tr>
+          <td>Jacket Levi's</td>
+          <td>Homme</td>
+          <td>Bleu</td>
+          <td>M</td>
+          <td>02/10/2024</td>
+        </tr>
+        <tr>
+          <td>Casquette Nike</td>
+          <td>Enfant</td>
+          <td>Rouge</td>
+          <td>Unique</td>
+          <td>05/11/2024</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Horizontal Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <a href="#">Homme</a>
+    <a href="#">Femme</a>
+    <a href="#">Enfant</a>
+  </div>
+
+  <script src="Script/HomePage.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+  <script src="https://cdn.datatables.net/responsive/3.0.3/js/dataTables.responsive.min.js"></script>
+  <script>
+    let table = new DataTable('#FavTable', {
+      responsive: true,
+      search: true,
+      scroller: true
+    });
+
+  </script>
+
+</body>
+
+</html>
