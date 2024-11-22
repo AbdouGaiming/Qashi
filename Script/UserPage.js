@@ -4,14 +4,105 @@ const progress = document.getElementById("progress");
 const formSteps = document.querySelectorAll(".form-step");
 const progressSteps = document.querySelectorAll(".progress-step");
 
+
 let formStepsNum = 0;
 
-nextBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    formStepsNum++;
-    updateFormSteps();
-    updateProgressbar();
+nextBtns.forEach((btn, index) => {
+  btn.addEventListener("click", (event) => {
+    event.preventDefault();
+    let valid = true;
+
+    if (index === 0) {
+      var firstname = document.getElementById("username").value.trim();
+      var lastname = document.getElementById("position").value.trim();
+      var nameRegExp = /^[a-zA-Z]+$/;
+
+      if (!nameRegExp.test(firstname)) {
+        document.getElementById("I-username").style.display = "block";
+        valid = false;
+      } else {
+        document.getElementById("I-username").style.display = "none";
+      }
+
+      if (!nameRegExp.test(lastname)) {
+        document.getElementById("I-lastname").style.display = "block";
+        valid = false;
+      } else {
+        document.getElementById("I-lastname").style.display = "none";
+      }
+    } else if (index === 1) {
+      var phone = document.getElementById("phone").value.trim();
+      var email = document.getElementById("email").value.trim();
+      var phoneRegExp = /^(0(6|5|7|9)\d{8}|0(21|23|29|44|20)\d{6}|\+213(7|5|6|9)\d{8})$/;
+      var emailRegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!phoneRegExp.test(phone)) {
+        document.getElementById("I-phone").style.display = "block";
+        valid = false;
+      } else {
+        document.getElementById("I-phone").style.display = "none";
+      }
+
+      if (!emailRegExp.test(email)) {
+        document.getElementById("I-email").style.display = "block";
+        valid = false;
+      } else {
+        document.getElementById("I-email").style.display = "none";
+      }
+    } else if (index === 2) {
+      var dob = document.getElementById("dob").value.trim();
+      var dobRegExp = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/;
+
+      if (!dob) {
+        document.getElementById("I-dob").style.display = "block";
+        valid = false;
+      } else {
+        document.getElementById("I-dob").style.display = "none";
+      }
+    }
+    if (valid) {
+      formStepsNum++;
+      updateFormSteps();
+      updateProgressbar();
+    }
   });
+});
+
+$("#password").on("focus", function () {
+  $("#PassValidation").show();
+});
+
+$("#password").on("blur", function () {
+  $("#PassValidation").hide();
+});
+
+
+document.getElementById("Submit").disabled = true;
+
+$("#password").on("keyup", function () {
+  var password = $(this).val();
+  var passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  if (passwordRegex.test(password)) {
+    $("#PassValidation").css("background-color", "#d4edda");
+    $("#PassValidation").css("color", "#155724");
+  } else {
+    $("#PassValidation").css("background-color", "#f8d7da");
+    $("#PassValidation").css("color", "#721c24");
+  }
+});
+
+$("#confirmPassword").on("input", function () {
+  var password = $("#password").val();
+  var repassword = $(this).val();
+
+  if (password === repassword) {
+    document.getElementById("Submit").disabled = false;
+    document.getElementById("I-confirmPassword").style.display = "none";
+  } else {
+    document.getElementById("Submit").disabled = true;
+    document.getElementById("I-confirmPassword").style.display = "block";
+  }
 });
 
 prevBtns.forEach((btn) => {
