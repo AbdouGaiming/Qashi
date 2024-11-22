@@ -105,6 +105,21 @@ $("#confirmPassword").on("input", function () {
   }
 });
 
+document.getElementById("Submit").addEventListener("click", function () {
+  event.preventDefault();
+  Swal.fire({
+    title: "Account Created Successfully!",
+    text: "You just created your account successfully!",
+    icon: "success",
+    confirmButtonText: "Continue",
+  }).then((result) => {
+    if (result.isConfirmed)
+    {
+      document.getElementById("accountForm").submit();
+    }
+  });
+});
+
 prevBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     formStepsNum--;

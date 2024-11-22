@@ -234,4 +234,16 @@ input {
     }
 }
 
+#I-lastname,
+#I-username,
+#I-phone,
+#I-email,
+#I-dob,
+#I-confirmPassword,
+#I-storename,
+#I-storeAddress {
+  color: red;
+  display: none;
+}
+
 

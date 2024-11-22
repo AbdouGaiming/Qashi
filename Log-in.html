@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="Style/Log-inStyle.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <title>Log-in</title>
 
 </head>
@@ -24,8 +25,31 @@
             <label for="psswrd">Mot de passe :</label>
             <input type="password" id="psswrd" name="psswrd" required>
             <a href="Sign-up.html">Vous n'avez pas de compte ?</a>
-            <input type="connect" value="Se connecter">
-            
+            <input type="submit" id="submit" value="Se connecter">
+            <script>
+              document.getElementById("submit").addEventListener("click", function(){
+                if(document.getElementById("lname").value == "" || document.getElementById("psswrd").value == ""){
+                  Swal.fire({
+                    title: 'Erreur',
+                    text: 'Veuillez remplir tous les champs',
+                    icon: 'error',
+                    confirmButtonText: 'Réessayer'
+                  })
+                  return;
+                }
+                Swal.fire({
+                  title: 'Connexion réussie',
+                  icon: 'success',
+                  confirmButtonText: 'Continuer',
+                  timer: 2000,
+                  timerProgressBar: true,
+                  willClose: () => {
+                    this.submit();
+                  }
+                })
+              });
+              
+            </script>
         </form>
     </div>
 </body>
