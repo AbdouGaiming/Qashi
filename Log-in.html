@@ -1,56 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="Style/Log-inStyle.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <title>Log-in</title>
 
 </head>
-<body>
-    <div class="top-border">
-      <a id="Logo" href="index.html"><img class="img" src="ICONS/Qashi.png"></a>
-    </div>
-        
-      <div class="container">
-        <h2>Connecter vous à votre compte</h2>
-        <form action="/action_page.php">
-            <label for="lname">Email :</label>
-            <input type="text" id="lname" name="lname" required>
 
-            <label for="psswrd">Mot de passe :</label>
-            <input type="password" id="psswrd" name="psswrd" required>
-            <a href="Sign-up.html">Vous n'avez pas de compte ?</a>
-            <input type="submit" id="submit" value="Se connecter">
-            <script>
-              document.getElementById("submit").addEventListener("click", function(){
-                if(document.getElementById("lname").value == "" || document.getElementById("psswrd").value == ""){
-                  Swal.fire({
-                    title: 'Erreur',
-                    text: 'Veuillez remplir tous les champs',
-                    icon: 'error',
-                    confirmButtonText: 'Réessayer'
-                  })
-                  return;
-                }
-                Swal.fire({
-                  title: 'Connexion réussie',
-                  icon: 'success',
-                  confirmButtonText: 'Continuer',
-                  timer: 2000,
-                  timerProgressBar: true,
-                  willClose: () => {
-                    this.submit();
-                  }
-                })
-              });
-              
-            </script>
-        </form>
-    </div>
+<body>
+  <div class="top-border">
+    <a id="Logo" href="index.html"><img class="img" src="ICONS/Qashi.png"></a>
+  </div>
+
+  <div class="container">
+    <h2>Connecter vous à votre compte</h2>
+    <form action="/action_page.php" id="loginForm">
+      <label for="lname">Email :</label>
+      <input type="text" id="lname" name="lname">
+
+      <label for="psswrd">Mot de passe :</label>
+      <input type="password" id="psswrd" name="psswrd">
+      <a href="Sign-up.html">Vous n'avez pas de compte ?</a>
+      <input type="submit" id="submit" value="Se connecter">
+      <script>
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+          event.preventDefault();
+          if (document.getElementById("lname").value == "" || document.getElementById("psswrd").value == "") {
+            Swal.fire({
+              title: 'Erreur',
+              text: 'Veuillez remplir tous les champs',
+              icon: 'error',
+              confirmButtonText: 'Réessayer'
+            })
+            return;
+          }
+          Swal.fire({
+            title: 'Connexion réussie',
+            icon: 'success',
+            confirmButtonText: 'Continuer'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href = "/action_page.php";
+            }
+          });
+        });
+      </script>
+    </form>
+  </div>
 </body>
+
 </html>
