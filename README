@@ -1,29 +1,30 @@
-Authentication / Home page roadmap !
+# Authentication / Home Page Roadmap
 
-****Authentication : ****
-**Sign-up Page : **
--First Name Text Area
--Last Name Text Area
--Date of birth Selector
--Email Text Input
--Password Text Input
--Submit Button : to submit new users information and create a new account 
+## Authentication
 
-**Log-in Page : ** 
--Email Text Input
--Password Text Input
--Connect Button : to confirm email address and password connection
+### Sign-up Page
+- **First Name**: Text Area
+- **Last Name**: Text Area
+- **Date of Birth**: Selector
+- **Email**: Text Input
+- **Password**: Text Input
+- **Submit Button**: To submit new user's information and create a new account
 
-****Home Page : ****
--Log-in Button : A Button that helps you to get to the Log-in to connect (user already has an account) (disappears after user connects) 
--Sign-up Button :  A Button that helps you to get to the Sign-up menu to Create an account (disappears after user connects)
--Categories Bar : A bar full describing the user's categorie (if the user is a man, woman, kid, baby...)
--Products Search Bar : A search bar for the product in search
--Add to Cart Menu : A little menu for the user that displays the added products (the user wishing to buy the products selected on the list) 
--Favorite Products List : A list that displays the user's favourit products (more like a wishlist can be developped as a seperate web page)
--Account Button : A button that takes us to the user's Dashboard (Information about the user, Paiement methods...)
--Product Area : An area the displays some Products (new products, products on discount, products on favorite list)
+### Log-in Page
+- **Email**: Text Input
+- **Password**: Text Input
+- **Connect Button**: To confirm email address and password connection
 
-IMPORTANT NOTE : there might be some modifications (additions/deletion) in terms of functionalities during the developping process
- 
+## Home Page
+
+- **Log-in Button**: A button that redirects to the Log-in page (disappears after user connects)
+- **Sign-up Button**: A button that redirects to the Sign-up page (disappears after user connects)
+- **Categories Bar**: A bar describing the user's category (e.g., man, woman, kid, baby)
+- **Products Search Bar**: A search bar for finding products
+- **Add to Cart Menu**: A menu displaying the products added to the cart
+- **Favorite Products List**: A list displaying the user's favorite products (wishlist, can be developed as a separate web page)
+- **Account Button**: A button that redirects to the user's Dashboard (information about the user, payment methods, etc.)
+- **Product Area**: An area displaying products (new products, products on discount, favorite products)
+
+**IMPORTANT NOTE**: There might be some modifications (additions/deletions) in terms of functionalities during the development process.
 
