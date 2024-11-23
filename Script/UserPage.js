@@ -95,13 +95,17 @@ $("#password").on("keyup", function () {
 $("#confirmPassword").on("input", function () {
   var password = $("#password").val();
   var repassword = $(this).val();
+  var passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-  if (password === repassword) {
-    document.getElementById("Submit").disabled = false;
-    document.getElementById("I-confirmPassword").style.display = "none";
-  } else {
-    document.getElementById("Submit").disabled = true;
-    document.getElementById("I-confirmPassword").style.display = "block";
+  if (passwordRegex.test(password)) {
+    if (password === repassword) {
+      document.getElementById("Submit").disabled = false;
+      document.getElementById("I-confirmPassword").style.display = "none";
+    } else {
+      document.getElementById("Submit").disabled = true;
+      document.getElementById("I-confirmPassword").style.display = "block";
+    }
   }
 });
 
@@ -113,8 +117,7 @@ document.getElementById("Submit").addEventListener("click", function () {
     icon: "success",
     confirmButtonText: "Continue",
   }).then((result) => {
-    if (result.isConfirmed)
-    {
+    if (result.isConfirmed) {
       document.getElementById("accountForm").submit();
     }
   });

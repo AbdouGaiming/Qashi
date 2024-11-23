@@ -58,10 +58,11 @@ nextBtns.forEach((btn, index) => {
                 document.getElementById("I-dob").style.display = "none";
             }
         } else if (index === 3) {
-            var address = document.getElementById("address").value.trim();
-            var storename = document.getElementById("storename").value.trim();
+            // document.getElementById("I-storename").style.display = "block";
+            var storename = document.getElementById("storeName").value.trim();
+            var address = document.getElementById("storeAddress").value.trim();
             var nameRegExp = /^[a-zA-Z]+$/;
-            var addressRegExp = /^[a-zA-Z0-9\s,'-]*$/;
+            var addressRegExp = /^(?!\s*$)[a-zA-Z0-9\s,'-]+$/;
 
             if (!nameRegExp.test(storename)) {
                 document.getElementById("I-storename").style.display = "block";
@@ -70,6 +71,7 @@ nextBtns.forEach((btn, index) => {
             else {
                 document.getElementById("I-storename").style.display = "none";
             }
+
 
             if (!addressRegExp.test(address)) {
                 document.getElementById("I-storeAddress").style.display = "block";
@@ -116,13 +118,17 @@ $("#password").on("keyup", function () {
 $("#confirmPassword").on("input", function () {
     var password = $("#password").val();
     var repassword = $(this).val();
+    var passwordRegex =
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-    if (password === repassword) {
-        document.getElementById("Submit").disabled = false;
-        document.getElementById("I-confirmPassword").style.display = "none";
-    } else {
-        document.getElementById("Submit").disabled = true;
-        document.getElementById("I-confirmPassword").style.display = "block";
+    if (passwordRegex.test(password)) {
+        if (password === repassword) {
+            document.getElementById("Submit").disabled = false;
+            document.getElementById("I-confirmPassword").style.display = "none";
+        } else {
+            document.getElementById("Submit").disabled = true;
+            document.getElementById("I-confirmPassword").style.display = "block";
+        }
     }
 });
 
