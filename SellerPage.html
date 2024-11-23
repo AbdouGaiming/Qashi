@@ -6,16 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="Style/SellerPageStyle.css" />
-  <script src="Script/UserPage.js" defer></script>
+  <script src="Script/SellerPage.js" defer></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <title>Seller Registration Form</title>
 </head>
 
 <body>
   <div class="top-border">
     <a id="Logo" href="index.html"><img class="img" src="ICONS/Qashi.png"></a>
-  </div>
+    </div>
 
-  <form action="#" class="form">
+    <form action="#" class="form">
     <h1 class="text-center">Seller Registration Form</h1>
     <!-- Progress bar -->
     <div class="progressbar">
@@ -32,13 +36,13 @@
     <div class="form-step form-step-active">
       <div class="input-group">
         <label for="firstname">Firstname</label>
-        <input type="text" required name="firstname" id="firstname" />
+        <input type="text" name="firstname" id="firstname" />
         <label id="I-username">Please enter a valid name</label>
       </div>
       <div class="input-group">
         <label for="lastname">Lastname</label>
         <input type="text" required name="lastname" id="lastname" />
-        <label id="I-username">Please enter a valid name</label>
+        <label id="I-lastname">Please enter a valid name</label>
       </div>
       <div class="">
         <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
@@ -68,7 +72,6 @@
       </div>
 
       <div class="btns-group">
-        <a href="#" class="btn"> Back</a>
         <a href="#" class="btn btn-prev">Previous</a>
         <a href="#" class="btn btn-next">Next</a>
       </div>
@@ -94,7 +97,7 @@
     <div class="form-step">
       <div class="input-group">
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" />
+        <input type="password" required name="password" id="password" />
       </div>
       <div id="PassValidation">
         <ul>
@@ -107,12 +110,12 @@
       </div>
       <div class="input-group">
         <label for="confirmPassword">Confirm Password</label>
-        <input type="password" name="confirmPassword" id="confirmPassword" />
+        <input type="password" required name="confirmPassword" id="confirmPassword" />
         <label id="I-confirmPassword">Passwords do not match</label>
       </div>
       <div class="btns-group">
         <a href="#" class="btn btn-prev">Previous</a>
-        <input type="submit" value="Submit" class="btn" />
+        <input type="submit" value="Submit" id="Submit" class="btn" />
       </div>
     </div>
   </form>
