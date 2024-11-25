@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seller Dashboard</title>
+    <link rel="stylesheet" href="Style/Sheet.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
+  <body>
+    <!-- Top Menu -->
+    <div class="top-menu">
+      <img src="ICONS/Qashi.png" alt="Qashi.com Logo" />
+      <div class="user-profile">
+        <span class="material-icons">account_circle</span>
+        <div class="dropdown">
+          <span>Zoubir</span>
+          <div class="dropdown-content">
+            <a href="Seller_Profile.html">Profile</a>
+            <a href="#">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li class="active">
+            <a href="Seller_Dashboard.html"
+              ><i class="icon-dashboard"></i><span>Dashboard</span></a
+            >
+          </li>
+          <li>
+            <a href="Seller_Orders.html"
+              ><i class="icon-orders"></i><span>Orders</span></a
+            >
+          </li>
+          <li>
+            <a href="Seller_Products.html"
+              ><i class="icon-products"></i><span>Products</span></a
+            >
+          </li>
+          <li>
+            <a href="Seller_Analytics.html"
+              ><i class="icon-analytics"></i><span>Analytics</span></a
+            >
+          </li>
+          <li>
+            <a href="Seller_Customers.html"
+              ><i class="icon-customers"></i><span>Customers</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <h1>Seller Dashboard</h1>
+      <!-- Dashboard Overview -->
+      <section class="dashboard-overview flex-container">
+        <div class="card">
+          <h2>Overall Sales</h2>
+          <div class="sales-graph">
+            <!-- Placeholder for sales graph -->
+          </div>
+        </div>
+        <div class="card">
+          <h3>Total Sales</h3>
+          <p>$10,000 <span class="percentage-change">+5%</span></p>
+        </div>
+        <div class="card">
+          <h3>Avg. Order Value</h3>
+          <p>$50 <span class="percentage-change">+2%</span></p>
+        </div>
+        <!--<div class="card">
+                <h3>Online Sessions</h3>
+                <p>1,200 <span class="percentage-change">+8%</span></p>
+            </div>-->
+        <div class="card">
+          <h3>Conversion Rate</h3>
+          <p>3.5% <span class="percentage-change">+1%</span></p>
+        </div>
+      </section>
+
+      <!-- Selling Products -->
+      <section class="selling-products">
+        <h2>Top Selling Products</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Sold Units</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Product 1</td>
+              <td>$20</td>
+              <td>100</td>
+              <td><span class="status in-stock">In Stock</span></td>
+            </tr>
+            <tr>
+              <td>Product 2</td>
+              <td>$30</td>
+              <td>50</td>
+              <td><span class="status out-of-stock">Out of Stock</span></td>
+            </tr>
+            <!-- More rows as needed -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>

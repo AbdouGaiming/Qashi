@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Profile</title>
+    <link rel="stylesheet" href="Style/Sheet.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script/Seller_Profile.js" defer></script>
+</head>
+<body>
+    <!-- Top Menu -->
+    <div class="top-menu">
+        <img src="ICONS/Qashi.png" alt="Qashi.com Logo">
+        <div class="user-profile">
+            <span class="material-icons">account_circle</span>
+            <div class="dropdown">
+                <span>Zoubir</span>
+                <div class="dropdown-content">
+                    <a href="Seller_Profile.html">Profile</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="Seller_Dashboard.html"><i class="icon-dashboard"></i><span>Dashboard</span></a></li>
+                <li><a href="Seller_Orders.html"><i class="icon-orders"></i><span>Orders</span></a></li>
+                <li><a href="Seller_Products.html"><i class="icon-products"></i><span>Products</span></a></li>
+                <li><a href="Seller_Analytics.html"><i class="icon-analytics"></i><span>Analytics</span></a></li>
+                <li><a href="Seller_Customers.html"><i class="icon-customers"></i><span>Customers</span></a></li>
+                <li class="active"><a href="Seller_Profile.html"><i class="icon-profile"></i><span>Profile</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1>Seller Profile</h1>
+        <div class="profile-form">
+            <h2>Personal Information</h2>
+            <form id="profile-form">
+                <label for="firstname">First Name</label>
+                <input type="text" id="firstname" name="firstname" placeholder="Zoubir">
+                <label id="I-firstname">Please enter a valid first name</label>
+
+                <label for="lastname">Last Name</label>
+                <input type="text" id="lastname" name="lastname" placeholder="Doe">
+                <label id="I-lastname">Please enter a valid last name</label>
+
+                <label for="datebirth">Date of Birth</label>
+                <input type="date" id="datebirth" name="datebirth" placeholder="1990-01-01">
+                <label id="I-datebirth">Please enter a valid date of birth</label>
+
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" placeholder="1234567890">
+                <label id="I-phone">Please enter a valid phone number</label>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="zoubir@example.com">
+                <label id="I-email">Please enter a valid email</label>
+
+                <button type="submit" id="update-profile">Update Profile</button>
+            </form>
+
+            <button class="add-product-button" id="change-password-button">Change Password</button>
+            <div id="change-password-section" style="display: none;">
+                <h2>Change Password</h2>
+                <!-- Password Change Form -->
+                <form id="password-form">
+                    <!-- New Password -->
+                    <label for="new-password">New Password</label>
+                    <input type="password" id="new-password" name="new-password" required>
+                    <!-- Password Validation Div -->
+                    <div id="PassValidation">
+                        <ul>
+                            <li>at least 8 characters</li>
+                            <li>at least 1 uppercase letter</li>
+                            <li>at least 1 lowercase letter</li>
+                            <li>at least 1 number</li>
+                            <li>at least 1 special character</li>
+                        </ul>
+                    </div>
+
+                    <!-- Confirm New Password -->
+                    <label for="confirm-password">Confirm New Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                    <label id="I-confirm-password">Passwords do not match</label>
+
+                    <!-- Update Password Button -->
+                    <button type="submit" id="update-password" disabled>Update Password</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('change-password-button').addEventListener('click', function() {
+            var section = document.getElementById('change-password-section');
+            if (section.style.display === 'none') {
+                section.style.display = 'block';
+            } else {
+                section.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

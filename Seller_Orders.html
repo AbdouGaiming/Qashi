@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <link rel="stylesheet" href="Style/Sheet.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+</head>
+<body>
+    <!-- Top Menu -->
+    <div class="top-menu">
+        <img src="ICONS/Qashi.png" alt="Qashi.com Logo">
+        <div class="user-profile">
+            <span class="material-icons">account_circle</span>
+            <div class="dropdown">
+                <span>Zoubir</span>
+                <div class="dropdown-content">
+                    <a href="Seller_Profile.html">Profile</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="Seller_Dashboard.html"><i class="icon-dashboard"></i><span>Dashboard</span></a></li>
+                <li class="active"><a href="Seller_Orders.html"><i class="icon-orders"></i><span>Orders</span></a></li>
+                <li><a href="Seller_Products.html"><i class="icon-products"></i><span>Products</span></a></li>
+                <li><a href="Seller_Analytics.html"><i class="icon-analytics"></i><span>Analytics</span></a></li>
+                <li><a href="Seller_Customers.html"><i class="icon-customers"></i><span>Customers</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1>Orders</h1>
+        <table class="orders-table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#O1001</td>
+                    <td>Customer 1</td>
+                    <td>2023-01-01</td>
+                    <td>$100.00</td>
+                    <td><span class="status pending">Pending</span></td>
+                    <td><button class="edit-button">Edit</button> <button class="delete-button">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>#O1002</td>
+                    <td>Customer 2</td>
+                    <td>2023-01-02</td>
+                    <td>$150.00</td>
+                    <td><span class="status completed">Completed</span></td>
+                    <td><button class="edit-button">Edit</button> <button class="delete-button">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>#O1003</td>
+                    <td>Customer 3</td>
+                    <td>2023-01-03</td>
+                    <td>$200.00</td>
+                    <td><span class="status cancelled">Cancelled</span></td>
+                    <td><button class="edit-button">Edit</button> <button class="delete-button">Delete</button></td>
+                </tr>
+                <!-- More rows as needed -->
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

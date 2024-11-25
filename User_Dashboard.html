@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="Style/Sheet.css">
+</head>
+<body>
+    <!-- Top Menu -->
+    <div class="top-menu">
+        <img src="ICONS/Qashi.png" alt="Qashi.com Logo">
+        <div class="user-profile">
+            <span class="material-symbols-outlined">account_circle</span>
+            <div class="dropdown">
+                <span>Zoubir</span>
+                <div class="dropdown-content">
+                    <a href="User_Profile.html">Profile</a>
+                    <a href="#">Settings</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+        </div>          
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <nav>
+            <ul>
+                <li class="active"><a href="User_Dashboard.html"><i class="icon-dashboard"></i><span>Dashboard</span></a></li>
+                <li><a href="User_Profile.html"><i class="icon-profile"></i><span>Profile</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1>User Dashboard</h1>
+        <!-- Orders History -->
+        <section class="orders-history">
+            <h2>Order History</h2>
+            <table class="orders-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12345</td>
+                        <td>2024-11-24</td>
+                        <td><span class="status completed">Completed</span></td>
+                        <td>$100.00</td>
+                    </tr>
+                    <tr>
+                        <td>12346</td>
+                        <td>2024-11-25</td>
+                        <td><span class="status pending">Pending</span></td>
+                        <td>$50.00</td>
+                    </tr>
+                    <!-- More rows as needed -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>

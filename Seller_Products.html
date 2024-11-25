@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Products</title>
+    <link rel="stylesheet" href="Style/Sheet.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="Script/Seller_Products.js" defer></script>
+    <script>
+        function toggleAddProductForm() {
+            const form = document.querySelector('.add-product-form');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</head>
+<body>
+    <!-- Top Menu -->
+    <div class="top-menu">
+        <img src="ICONS/Qashi.png" alt="Qashi.com Logo">
+        <div class="user-profile">
+            <span class="material-icons">account_circle</span>
+            <div class="dropdown">
+                <span>Zoubir</span>
+                <div class="dropdown-content">
+                    <a href="Seller_Profile.html">Profile</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="Seller_Dashboard.html"><i class="icon-dashboard"></i><span>Dashboard</span></a></li>
+                <li><a href="Seller_Orders.html"><i class="icon-orders"></i><span>Orders</span></a></li>
+                <li class="active"><a href="Seller_Products.html"><i class="icon-products"></i><span>Products</span></a></li>
+                <li><a href="Seller_Analytics.html"><i class="icon-analytics"></i><span>Analytics</span></a></li>
+                <li><a href="Seller_Customers.html"><i class="icon-customers"></i><span>Customers</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1>Manage Products</h1>
+        <button class="add-product-button" onclick="toggleAddProductForm()">Add New Product</button>
+        <table class="products-table">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Stock Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#P1001</td>
+                    <td>Product 1</td>
+                    <td>Category 1</td>
+                    <td>$20.00</td>
+                    <td><span class="status in-stock">In Stock</span></td>
+                    <td><button class="edit-button">Edit</button> <button class="delete-button">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>#P1002</td>
+                    <td>Product 2</td>
+                    <td>Category 2</td>
+                    <td>$30.00</td>
+                    <td><span class="status out-of-stock">Out of Stock</span></td>
+                    <td><button class="edit-button">Edit</button> <button class="delete-button">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>#P1003</td>
+                    <td>Product 3</td>
+                    <td>Category 3</td>
+                    <td>$25.00</td>
+                    <td><span class="status in-stock">In Stock</span></td>
+                    <td><button class="edit-button">Edit</button> <button class="delete-button">Delete</button></td>
+                </tr>
+                <!-- More rows as needed -->
+            </tbody>
+        </table>
+
+        <!-- Add New Product Form -->
+        <div class="add-product-form" id="add-product-form" style="display: none;">
+            <h2>Add New Product</h2>
+            <form id="add-product-form">
+                <!-- General Product Information -->
+                <label for="product-name">Product Name</label>
+                <input type="text" id="product-name" name="product-name">
+                <label id="I-product-name" style="display:none; color:red;">Please enter a valid product name</label>
+
+                <label for="description">Description</label>
+                <textarea id="description" name="description"></textarea>
+                <label id="I-description" style="display:none; color:red;">Please enter a valid description</label>
+
+                <label for="price">Price</label>
+                <input type="text" id="price" name="price">
+                <label id="I-price" style="display:none; color:red;">Please enter a valid price</label>
+
+                <label for="product-image">Product Image</label>
+                <input type="file" id="product-image" name="product-image" accept="image/*">
+
+                <!-- Category and Sub-Category -->
+                <label for="category">Category</label>
+                <select id="category" name="category">
+                    <option value="men">Men</option>
+                    <option value="women">Women</option>
+                    <option value="boys">Boys</option>
+                    <option value="girls">Girls</option>
+                </select>
+
+                <label for="sub-category">Sub Category</label>
+                <select id="sub-category" name="sub-category">
+                    <option value="hats">Hats</option>
+                    <option value="shoes">Shoes</option>
+                    <option value="t-shirts">T-Shirts</option>
+                    <option value="shirts">Shirts</option>
+                    <option value="jeans">Jeans</option>
+                    <option value="shorts">Shorts</option>
+                    <option value="socks">Socks</option>
+                    <option value="hoodies">Hoodies</option>
+                    <option value="jackets">Jackets</option>
+                    <option value="underwears">Underwears</option>
+                    <option value="dresses">Dresses</option>
+                    <option value="pants">Pants</option>
+                    <option value="suits">Suits</option>
+                </select>
+
+                <!-- Product Variants -->
+                <h3>Product Variants</h3>
+                <label for="variant-color">Color</label>
+                <input type="text" id="variant-color" name="variant-color">
+                <label id="I-variant-color" style="display:none; color:red;">Please enter a valid color</label>
+
+                <label for="variant-size">Size</label>
+                <input type="text" id="variant-size" name="variant-size">
+
+                <label for="variant-stock-quantity">Stock Quantity</label>
+                <input type="text" id="variant-stock-quantity" name="variant-stock-quantity">
+                <label id="I-variant-stock-quantity" style="display:none; color:red;">Please enter a valid stock quantity</label>
+
+                <button type="submit" id="add-product-submit">Add Product</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
