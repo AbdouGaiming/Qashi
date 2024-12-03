@@ -1,30 +1,61 @@
-# Authentication / Home Page Roadmap
+🚀 Features Overview
 
-## Authentication
+🔒 Authentication
 
-### Sign-up Page
-- **First Name**: Text Area
-- **Last Name**: Text Area
-- **Date of Birth**: Selector
-- **Email**: Text Input
-- **Password**: Text Input
-- **Submit Button**: To submit new user's information and create a new account
+Sign-up Page
 
-### Log-in Page
-- **Email**: Text Input
-- **Password**: Text Input
-- **Connect Button**: To confirm email address and password connection
+First Name: Text area for entering the first name.
 
-## Home Page
+Last Name: Text area for entering the last name.
 
-- **Log-in Button**: A button that redirects to the Log-in page (disappears after user connects)
-- **Sign-up Button**: A button that redirects to the Sign-up page (disappears after user connects)
-- **Categories Bar**: A bar describing the user's category (e.g., man, woman, kid, baby)
-- **Products Search Bar**: A search bar for finding products
-- **Add to Cart Menu**: A menu displaying the products added to the cart
-- **Favorite Products List**: A list displaying the user's favorite products (wishlist, can be developed as a separate web page)
-- **Account Button**: A button that redirects to the user's Dashboard (information about the user, payment methods, etc.)
-- **Product Area**: An area displaying products (new products, products on discount, favorite products)
+Date of Birth: Dropdown selector for date input.
 
-**IMPORTANT NOTE**: There might be some modifications (additions/deletions) in terms of functionalities during the development process.
+Email: Text input for entering a valid email address.
+
+Password: Password input field.
+
+Submit Button: Registers the user and creates a new account.
+
+
+Log-in Page
+
+Email: Text input for the email address.
+
+Password: Password input field.
+
+Connect Button: Verifies credentials and logs the user in.
+
+
+
+---
+
+🏠 Home Page
+
+Log-in Button: Redirects to the Log-in page (disappears upon successful login).
+
+Sign-up Button: Redirects to the Sign-up page (disappears upon successful login).
+
+Categories Bar: Displays categories like man, woman, kid, or baby.
+
+Products Search Bar: Enables users to search for products efficiently.
+
+Add to Cart Menu: Lists products the user has added to their cart.
+
+Favorite Products List: Displays favorite products (wishlist; may evolve into a separate page).
+
+Account Button: Redirects to the user's dashboard, showing user data and payment methods.
+
+Product Area: Showcases new products, discounts, and favorites.
+
+
+
+---
+
+⚙️ Development Notes
+
+The roadmap provides a foundation for iterative development.
+
+Functionalities may expand or be refined during the development process.
+
+
 
