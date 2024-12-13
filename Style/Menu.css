@@ -150,6 +150,10 @@
 
     /* Cart dropdown */
     .cart-dropdown {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       display: none;
       position: absolute;
       top: 40px;
@@ -362,5 +366,8 @@
       }
     }
 
+    .checkout-button {
+      margin-top: 10px;
+    }
 
     

@@ -1,0 +1,190 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background: linear-gradient(135deg, #6fdb6f, #a7e3a7);
+    margin: 0;
+    padding: 0;
+}
+
+.top-border {
+    background: #4caf50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background: #fff;
+    margin: 3px 0;
+    border-radius: 3px;
+}
+
+.img {
+    height: 40px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    margin-right: 10px;
+    width: 200px;
+}
+
+.search-button {
+    padding: 5px 10px;
+    border: none;
+    background: #fff;
+    color: #4caf50;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.icon {
+    color: white;
+    /* Set the color to white */
+    font-size: 1.8rem;
+    /* Adjust the size (1.8rem = larger size) */
+    /* margin-left: 1px; */
+    /* Add spacing between icons */
+    cursor: pointer;
+    /* Optional: makes the icons clickable */
+}
+
+.cart-dropdown {
+    position: absolute;
+    background: #fff;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: none;
+    top: 50px;
+    right: 20px;
+}
+
+.cart-dropdown .cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.product-details {
+    padding: 15px;
+}
+
+.product-details h2 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    font-weight: 700;
+    color: #333;
+}
+
+.product-details .price {
+    color: #e74c3c;
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+.product-details button {
+    background: linear-gradient(135deg, #6fdb6f, #a7e3a7);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.product-details button:hover {
+    background: linear-gradient(135deg, #5ace5a, #96d296);
+}
+
+.product-details button:active {
+    transform: scale(0.98);
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #333;
+    color: #fff;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu ul li {
+    margin: 20px 0;
+}
+
+.menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.menu ul li a:hover {
+    text-decoration: underline;
+}
+
+.menu.show {
+    left: 0;
+}

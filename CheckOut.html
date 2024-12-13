@@ -107,11 +107,40 @@
     <div class="col-25">
       <div class="container">
         <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>2</b></span></h4>
-        <p> Product 1 <span class="price">$15</span></p>
-        <p> Product 2 <span class="price">$5</span></p>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            fetchCartItems();
+          });
 
-        <hr>
-        <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+          function fetchCartItems() {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'fetch_cart_items.php', true);
+
+            xhr.onload = function() {
+              if (xhr.status === 200 && xhr.readyState === 4) {
+                const data = JSON.parse(xhr.responseText);
+                const cartContainer = document.querySelector('.col-25 .container');
+                let cartHTML = '<h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>' + data.length + '</b></span></h4>';
+                
+                let total = 0;
+                data.forEach(item => {
+                  cartHTML += `<p>${item.name} <span class="price">$${item.price}</span></p>`;
+                  total += parseFloat(item.price);
+                  total = Math.round(total * 100) / 100; 
+                });
+
+        
+                cartHTML += `<hr><p>Total <span class="price" style="color:black"><b>$${total}</b></span></p>`;
+
+                cartContainer.innerHTML = cartHTML;
+              } else {
+                console.error('Error fetching cart items.');
+              }
+            };
+
+            xhr.send();
+          }
+        </script>
       </div>
     </div>
   </div>
