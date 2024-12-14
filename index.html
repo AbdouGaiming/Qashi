@@ -11,6 +11,8 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="Style/Menu.css" />
   <link rel="stylesheet" href="Style/Product_List.css" />
+  <link rel="stylesheet" href="Style/Cart.css" />
+  <link rel="stylesheet" href="Style/Footer.css" />
 
   <script src="Script/HomePage.js"></script>
 
@@ -38,110 +40,82 @@
     <img src="ICONS/cart-button.png" class="cart-icon" onclick="toggleCartDropdown()" />
     <div class="cart-icon">
       <div class="cart-dropdown" id="cartDropdown">
-        <p>Cart Items :</p>
-        <script>
-          xhr = new XMLHttpRequest();
-          xhr.open('GET', 'Database/fetch_cart.php', true);
-          xhr.onload = function () {
-            if (xhr.status === 200 && xhr.readyState === 4) {
-              const data = JSON.parse(xhr.responseText);
-              const cartDropdown = document.getElementById('cartDropdown');
-              cartDropdown.innerHTML = '<p>Cart Items :</p>';
-              if (data.length === 0) {
-                cartDropdown.innerHTML += '<p>No items in cart.</p>';
-              }
-              data.forEach(item => {
-                const cartItem = document.createElement('div');
-                cartItem.className = 'cart-item';
-                cartItem.textContent = `${item.name} $${item.price}`;
-                cartDropdown.appendChild(cartItem);
-              });
-            } else {
-              console.error('Error loading cart items.');
-            }
-            xhr.send();
-          };
-        </script>
         <button class="checkout-button" id="cart-button" onclick="window.location.href='CheckOut.html';">Go to
           Checkout</button>
       </div>
     </div>
-    <a href="Log-in.html"><img class="account-icon" src="ICONS/Account-button.png" /></a>
+    <div class="profil-icon">
+      <a href="Log-in.html"><img class="account-icon" src="ICONS/Account-button.png" /></a>
+    </div>
   </div>
 
   <div class="container">
     <div id="productContainer" class="product-container"></div>
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      loadProducts();
-
-      document.getElementById('searchbtn').addEventListener('click', function () {
-        const searchTerm = document.querySelector('.search-input').value;
-        searchProducts(searchTerm);
-      });
-    });
-
-    function loadProducts() {
-      const xhr = new XMLHttpRequest();
-      xhr.open('GET', 'Database/fetch_products.php', true);
-
-      xhr.onload = function () {
-        if (xhr.status === 200 && xhr.readyState === 4) {
-          const data = JSON.parse(xhr.responseText);
-          displayProducts(data);
-        } else {
-          console.error('Error loading products.');
-        }
-      };
-
-      xhr.send();
-    }
-
-    function searchProducts(query) {
-      const xhr = new XMLHttpRequest();
-      xhr.open('GET', `Database/search_products.php?query=${encodeURIComponent(query)}`, true);
-
-      xhr.onload = function () {
-        if (xhr.status === 200 && xhr.readyState === 4) {
-          const data = JSON.parse(xhr.responseText);
-          displayProducts(data);
-        } else {
-          console.error('Error searching products.');
-        }
-      };
-
-      xhr.send();
-    }
-
-    function displayProducts(products) {
-      const productContainer = document.getElementById('productContainer');
-      productContainer.innerHTML = '';
-
-      if (products.length > 0) {
-        products.forEach(product => {
-          const productDiv = document.createElement('div');
-          productDiv.className = 'product';
-          productDiv.innerHTML = `
-            <img src='Assets/${product.image_url}' alt='${product.name}' class='product-img' />
-            <h2 class='product-name'>${product.name}</h2>
-            <p class='product-price'>$${product.price}</p>
-            <button onclick="window.location.href='ProductPage.html?id=${product.product_id}';">View Product</button>
-          `;
-          productContainer.appendChild(productDiv);
-        });
-      } else {
-        productContainer.innerHTML = '<p>No results found.</p>';
-      }
-    }
-  </script>
   <div class="sidebar" id="sidebar">
     <a href="#" id="Men">Men</a>
     <a href="#" id="Women">Women</a>
     <a href="#" id="Boys">Boys</a>
     <a href="#" id="Girls">Girls</a>
-  </div>
+</div>
 </body>
+<footer class="footer">
+  <div class="footer-container">
+    <!-- About Section -->
+    <div class="footer-column">
+      <h3>About Qashi</h3>
+      <p>
+        Welcome to Qashi, your one-stop shop for quality products at unbeatable prices. We’re here to make shopping
+        easy, secure, and enjoyable for everyone!
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-column">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Favorite-items.html">Favorites</a></li>
+        <li><a href="Log-in.html">My Account</a></li>
+        <li><a href="CheckOut.html">Checkout</a></li>
+      </ul>
+    </div>
+
+    <!-- Customer Service -->
+    <div class="footer-column">
+      <h3>Customer Service</h3>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Shipping Information</a></li>
+        <li><a href="#">Returns & Refunds</a></li>
+        <li><a href="#">FAQs</a></li>
+      </ul>
+    </div>
+
+    <!-- Newsletter Signup -->
+    <div class="footer-column">
+      <h3>Stay Connected</h3>
+      <p>Subscribe to our newsletter for the latest deals and updates:</p>
+      <form>
+        <input type="email" placeholder="Enter your email" class="newsletter-input" />
+        <button type="submit" class="newsletter-button">Subscribe</button>
+      </form>
+      <div class="social-icons">
+        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+            alt="Facebook" /></a>
+        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+            alt="Instagram" /></a>
+        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Linkedin_icon.svg"
+            alt="LinkedIn" /></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom-bar">
+    <p>&copy; 2024 Qashi. All rights reserved. | Designed with ❤️ by Qashi Team.</p>
+  </div>
+</footer>
+
+
 
 </html>

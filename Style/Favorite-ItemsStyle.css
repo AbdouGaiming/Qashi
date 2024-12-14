@@ -1,48 +1,31 @@
-/* Full-page styling */
+
 body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #CBD2A4;
+  background-color: #CBD2A4; 
   font-family: "DM Serif Display", serif;
 }
 
-/* Container styling */
+
 .container {
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 1300px;
-  height: 450px;
-  margin-top: 150px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-/* Table Container Styling */
-.container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 20px;
-  margin-top: 135px;
-  font-family: "DM Serif Display", serif;
+  background-color: #ffffff; 
+  border-radius: 12px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); 
+  width: 90%; 
+  max-width: 1200px; 
+  margin: 20px auto;
+  padding: 20px; 
 }
 
-/* Table Styling */
 #FavTable {
-  width: 100%;
-  border-collapse: collapse;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  background-color: #ffffff;
+  width: 100%; 
+  border-collapse: collapse; 
   font-family: "DM Serif Display", serif;
 }
 
 #FavTable thead {
-  background-color: #333;
+  background-color: #333; 
   color: #ffffff;
   font-weight: bold;
 }
@@ -50,10 +33,11 @@ body {
 #FavTable thead th {
   padding: 15px;
   text-align: left;
+  border-bottom: 2px solid #444; 
 }
 
 #FavTable tbody tr:nth-child(even) {
-  background-color: #f7f7f7;
+  background-color: #f9f9f9; 
 }
 
 #FavTable tbody tr:nth-child(odd) {
@@ -62,15 +46,52 @@ body {
 
 #FavTable tbody td {
   padding: 12px 15px;
+  border-bottom: 1px solid #ddd; 
   color: #333;
 }
 
 #FavTable tbody tr:hover {
-  background-color: #ececec;
+  background-color: #f1f1f1; 
   cursor: pointer;
 }
 
-/* Responsive Styling */
+
+.dataTables_wrapper .dataTables_filter {
+  margin-bottom: 15px;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.dataTables_wrapper .dataTables_paginate {
+  margin-top: 10px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  color: #333;
+  text-decoration: none;
+  margin: 0 2px;
+  background-color: #fff;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  background-color: #ff4500;
+  color: #fff;
+}
+
+.dataTables_wrapper .dataTables_info {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+
 @media (max-width: 768px) {
   #FavTable thead {
     display: none;
@@ -91,8 +112,8 @@ body {
   #FavTable tbody td:before {
     content: attr(data-label);
     font-weight: bold;
-    display: inline-block;
-    margin-right: 10px;
+    display: block;
+    margin-bottom: 5px;
     color: #555;
   }
 }
