@@ -6,6 +6,8 @@
     <title>Analytics</title>
     <link rel="stylesheet" href="Style/Sheet.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="Script/Seller_Analytics.js" defer></script>
 </head>
 <body>
     <!-- Top Menu -->
@@ -35,6 +37,7 @@
             </ul>
         </nav>
     </aside>
+
     <!-- Main Content -->
     <main class="main-content">
         <h1>Analytics</h1>
@@ -42,26 +45,31 @@
             <div class="card">
                 <h2>Sales Overview</h2>
                 <div class="chart">
-                    <!-- Placeholder for sales chart -->
+                    <canvas id="salesChart"></canvas>
                 </div>
             </div>
-            <!--<div class="card">
+            <div class="card">
                 <h2>Traffic Overview</h2>
                 <div class="chart">
-                    
-                </div>-->
+                    <canvas id="trafficChart"></canvas>
+                </div>
             </div>
-            </div>
-            <!--<div class="card">
+            <div class="card">
                 <h2>Conversion Rate</h2>
                 <div class="chart">
-                    
+                    <canvas id="conversionChart"></canvas>
                 </div>
-            </div>-->
+            </div>
             <div class="card">
                 <h2>Top Products</h2>
                 <div class="chart">
-                    <!-- Placeholder for top products chart -->
+                    <canvas id="topProductsChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <h2>Total Sales</h2>
+                <div class="chart">
+                    <canvas id="totalSalesChart"></canvas>
                 </div>
             </div>
         </div>
