@@ -123,6 +123,22 @@ document.getElementById("Submit").addEventListener("click", function () {
   });
 });
 
+document.getElementById("dob").addEventListener("input", function () {
+  var dob = this.value.trim();
+  var dobRegExp = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/;
+  var valid = dobRegExp.test(dob);
+
+  if (!valid) {
+    document.getElementById("I-dob").style.display = "block";
+    document.querySelector(".btn-next").disabled = true;
+  } else {
+    document.getElementById("I-dob").style.display = "none";
+    document.querySelector(".btn-next").disabled = false;
+  }
+});
+
+
+
 prevBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     formStepsNum--;
@@ -154,3 +170,71 @@ function updateProgressbar() {
   progress.style.width =
     ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
 }
+
+
+
+//ajax request
+
+document.getElementById("Submit").addEventListener("click", function (event) {
+  event.preventDefault();
+
+  const formData = new FormData(document.getElementById("accountForm"));
+
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", "Database/UserPage.php", true);
+
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      try {
+        const response = JSON.parse(xhr.responseText);
+        if (response.success) {
+          Swal.fire({
+            title: "Account Created Successfully!",
+            text: response.message || "You just created your account successfully!",
+            icon: "success",
+            confirmButtonText: "Continue",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href = "index.html"; // Redirect to another page if needed
+            }
+          });
+        } else {
+          Swal.fire({
+            title: "Error",
+            text: response.message || "There was an issue creating your account.",
+            icon: "error",
+            confirmButtonText: "Try Again",
+          });
+        }
+      } catch (error) {
+        console.error("Error parsing response:", error);
+        Swal.fire({
+          title: "Error",
+          text: "An unexpected error occurred. Please try again later.",
+          icon: "error",
+          confirmButtonText: "Try Again",
+        });
+      }
+    } else {
+      console.error("Failed to submit form. Status:", xhr.status);
+      Swal.fire({
+        title: "Error",
+        text: "Failed to submit the form. Please check your network and try again.",
+        icon: "error",
+        confirmButtonText: "Try Again",
+      });
+    }
+  };
+
+  xhr.onerror = function () {
+    console.error("An error occurred while submitting the form.");
+    Swal.fire({
+      title: "Error",
+      text: "An error occurred while submitting the form. Please try again.",
+      icon: "error",
+      confirmButtonText: "Try Again",
+    });
+  };
+
+  xhr.send(formData);
+});
