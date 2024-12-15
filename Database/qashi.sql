@@ -42,26 +42,26 @@ CREATE TABLE `product_variants` (
   `stock_quantity` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `orders` (
-  `order_id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_id` INT(11) NOT NULL,
-  `order_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `total_amount` DECIMAL(10,2) NOT NULL,
-  `status` ENUM('Pending','Completed','Cancelled') NOT NULL DEFAULT 'Pending',
-  PRIMARY KEY (`order_id`),
-  FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- CREATE TABLE `orders` (
+--   `order_id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+--   `user_id` INT(11) NOT NULL,
+--   `order_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--   `total_amount` DECIMAL(10,2) NOT NULL,
+--   `status` ENUM('Pending','Completed','Cancelled') NOT NULL DEFAULT 'Pending',
+--   PRIMARY KEY (`order_id`),
+--   FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `order_items` (
-  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `order_id` BIGINT(20) UNSIGNED NOT NULL,
-  `product_id` INT(11) NOT NULL,
-  `quantity` INT(11) NOT NULL,
-  `price` DECIMAL(10,2) NOT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`) ON DELETE CASCADE,
-  FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- CREATE TABLE `order_items` (
+--   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+--   `order_id` BIGINT(20) UNSIGNED NOT NULL,
+--   `product_id` INT(11) NOT NULL,
+--   `quantity` INT(11) NOT NULL,
+--   `price` DECIMAL(10,2) NOT NULL,
+--   PRIMARY KEY (`id`),
+--   FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`) ON DELETE CASCADE,
+--   FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `stores` (
   `store_id` int(50) NOT NULL,
