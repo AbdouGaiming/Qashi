@@ -117,6 +117,40 @@ function loadCartItems() {
     xhr.send();
 }
 
+
+// Function to add product to cart
+function addToCart(id) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'Database/add_to_cart.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xhr.onload = function () {
+        if (xhr.status === 200 && xhr.readyState === 4) {
+            try {
+                console.log(xhr.responseText);
+                const response = JSON.parse(xhr.responseText);
+                if (response.success) {
+                    // Refresh the cart after successful addition
+                    loadCartItems();
+                } else {
+                    console.error('Error adding to cart:', response.message);
+                }
+            } catch (error) {
+                console.error('Error parsing add-to-cart response:', error);
+            }
+        } else {
+            console.error('Failed to add to cart. Status:', xhr.status);
+        }
+    };
+
+    xhr.onerror = function () {
+        console.error('An error occurred while adding to the cart.');
+    };
+
+    xhr.send(`id=${encodeURIComponent(id)}`);
+}
+
+
 // Function to decrease cart item quantity
 function decreaseCartItem(id) {
     const xhr = new XMLHttpRequest();

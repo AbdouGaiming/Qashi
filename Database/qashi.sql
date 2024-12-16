@@ -138,4 +138,10 @@ ALTER TABLE `product_variants`
 ALTER TABLE `stores`
   ADD CONSTRAINT `store_id` FOREIGN KEY (`store_id`) REFERENCES `users` (`user_id`);
 
+  INSERT INTO `products` (`product_id`, `name`, `description`, `price`, `stock`, `category`, `sub_category`, `created_at`, `image_url`) VALUES
+    (1, 'LEVI\'S® WOMEN\'S L BLACK TRUCKER JACKET', 'Price: $140 <del>$170</del>', 140.00, 50, 'women', 'jackets', current_timestamp(), 'url_to_image');
+
+  INSERT INTO `product_variants` (`variant_id`, `product_id`, `color`, `size`, `stock_quantity`) VALUES
+    (1, 1, 'Black', 'L', 50);
+
 COMMIT;

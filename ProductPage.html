@@ -139,10 +139,26 @@
 
     <!-- Horizontal Sidebar -->
     <div class="sidebar" id="sidebar">
-      <a href="#">Homme</a>
-      <a href="#">Femme</a>
-      <a href="#">Garcon</a>
-      <a href="#">Fille</a>
+      <div>
+        <form>
+          <script src="Script/Filter_Product.js"></script>
+          <button type="submit" class="filter-button">Filter</button>
+          <label for="category">Category</label>
+          <label>Men</label>
+          <input type="checkbox" id="men" name="men" value="men">
+          <label>Women</label>
+          <input type="checkbox" id="Women" name="Women" value="women">
+          <label>Kids</label>
+          <input type="checkbox" id="Kids" name="Kids" value="kids">
+          <label for="color">Color</label>
+          <input type="text" id="color" name="color" placeholder="color">
+          <label for="size">Size</label>
+          <input type="text" id="size" name="size" placeholder="size">
+        </form>
+      </div>  
+      <a href="#" id="Men">Men</a>
+      <a href="#" id="Women">Women</a>
+      <a href="#" id="Kids">Kids</a>  
     </div>
   </body>
 </html>

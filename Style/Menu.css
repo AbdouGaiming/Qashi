@@ -375,11 +375,35 @@ a {
   margin-top: 10px;
 }
 
-.mwc-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
+.filter-button {
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #8BED5C;
+}
 
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 10px;
+  color: black;
+}
+
+.sub-categories {
+  display: none; /* Hidden by default */
+  padding-left: 20px;
+  background-color: #f0f0f0; /* Optional styling */
+  margin-top: 5px;
+  border: 1px solid #ddd;
+}
+
+.sub-categories a {
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.sub-categories a:hover {
+  background-color: #ddd; /* Highlight on hover */
 }

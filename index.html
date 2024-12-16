@@ -54,57 +54,53 @@
   </div>
 
   <div class="sidebar" id="sidebar">
-    <div class="mwc-container">  
-    <a href="#" id="Men">Men</a>
-      <ul>
-        <li><a href="#">Accessories</a></li>
-        <li><a href="#">Vests</a></li>
-        <li><a href="#">Jackets</a></li>
-        <li><a href="#">Shirts</a></li>
-        <li><a href="#">T-shirts</a></li>
-        <li><a href="#">Polos</a></li>
-        <li><a href="#">Sweats</a></li>
-        <li><a href="#">Hoodies</a></li>
-        <li><a href="#">Pants</a></li>
-        <li><a href="#">Jeans</a></li>
-        <li><a href="#">Shorts</a></li> 
-        <li><a href="#">Shoes</a></li>
-        <li><a href="#">Sneakers</a></li>
-        <li><a href="#">Boots</a></li> 
-      </ul>
+    <div>
+      <form>
+        <script src="Script/Filter_Product.js"></script>
+        <button type="submit" class="filter-button">Filter</button>
+        <label for="category">Category</label>
+        <label>Men</label>
+        <input type="checkbox" id="men" name="men" value="men">
+        <label>Women</label>
+        <input type="checkbox" id="Women" name="Women" value="women">
+        <label>Kids</label>
+        <input type="checkbox" id="Kids" name="Kids" value="kids">
+        <label for="color">Color</label>
+        <input type="text" id="color" name="color" placeholder="color">
+        <label for="size">Size</label>
+        <input type="text" id="size" name="size" placeholder="size">
+      </form>
     </div>
-    <div class="mwc-container">  
-    <a href="#" id="Women">Women</a>
-      <ul>
-        <li><a href="#">Accessories</a></li>
-        <li><a href="#">Shirts</a></li>
-        <li><a href="#">Tops</a></li>
-        <li><a href="#">Bodys</a></li>
-        <li><a href="#">Blouses</a></li>
-        <li><a href="#">T-shirts</a></li>
-        <li><a href="#">Sweats</a></li>
-        <li><a href="#">Hoodies</a></li>
-        <li><a href="#">Cardigans</a></li>
-        <li><a href="#">Pants</a></li>
-        <li><a href="#">Jeans</a></li>
-        <li><a href="#">Robes</a></li>
-        <li><a href="#">Skirts</a></li>  
-        <li><a href="#">Shoes</a></li>
-        <li><a href="#">Sneakers</a></li>
-        <li><a href="#">Boots</a></li> 
-      </ul>
+    
+    <div>
+      <script src="Script/Sub_Category.js"></script>
+    <div>
+      <a href="#" id="Men">Men</a>
+      <a href="#" id="Women">Women</a>
+      <a href="#" id="Kids">Kids</a>
     </div>
-    <a href="#" id="Boys">Boys</a>
-      <ul>
-        <li><a href="#">Accessories</a></li>
-        <li><a href="#">1-6 years old</a></li>
-        <li><a href="#">6-14 years old</a></li>
-      </ul>
+    
+    <div class="sub-categories" id="menSubCategories">
+      <a href="#">T-Shirts</a>
+      <a href="#">Shirts</a>
+      <a href="#">Jeans</a>
+      <a href="#">Jackets</a>
     </div>
-    <a href="#" id="Girls">Girls</a>
-      <ul>
-      </ul>
-</div>
+    <div class="sub-categories" id="womenSubCategories">
+      <a href="#">Dresses</a>
+      <a href="#">Tops</a>
+      <a href="#">Skirts</a>
+      <a href="#">Blouses</a>
+    </div>
+    <div class="sub-categories" id="kidsSubCategories">
+      <a href="#">T-Shirts</a>
+      <a href="#">Shorts</a>
+      <a href="#">Pants</a>
+      <a href="#">Sweaters</a>
+    </div>
+    </div>
+      
+  </div>
 </body>
 <footer class="footer">
   <div class="footer-container">
