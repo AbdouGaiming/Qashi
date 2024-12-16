@@ -4,12 +4,13 @@ const progress = document.getElementById("progress");
 const formSteps = document.querySelectorAll(".form-step");
 const progressSteps = document.querySelectorAll(".progress-step");
 
-
 let formStepsNum = 0;
+
 nextBtns.forEach((btn, index) => {
     btn.addEventListener("click", () => {
         let valid = true;
 
+        // Validate Step 1
         if (index === 0) {
             var firstname = document.getElementById("firstname").value.trim();
             var lastname = document.getElementById("lastname").value.trim();
@@ -28,9 +29,12 @@ nextBtns.forEach((btn, index) => {
             } else {
                 document.getElementById("I-lastname").style.display = "none";
             }
-        } else if (index === 1) {
+        } 
+        // Validate Step 2
+        else if (index === 1) {
             var phone = document.getElementById("phone").value.trim();
             var email = document.getElementById("email").value.trim();
+            email = email.toLowerCase();
             var phoneRegExp = /^(0(6|5|7|9)\d{8}|0(21|23|29|44|20)\d{6}|\+213(7|5|6|9)\d{8})$/;
             var emailRegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -51,7 +55,7 @@ nextBtns.forEach((btn, index) => {
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
                 xhr.onload = function () {
-                    if (xhr.status === 200) {
+                    if (xhr.status === 200  && xhr.readyState === 4) {
                         const response = JSON.parse(xhr.responseText);
                         if (!response.success) {
                             document.getElementById("I-email").textContent = response.message;
@@ -71,7 +75,9 @@ nextBtns.forEach((btn, index) => {
 
                 xhr.send(`email=${encodeURIComponent(email)}`);
             }
-        } else if (index === 2) {
+        } 
+        // Validate Step 3
+        else if (index === 2) {
             var dob = document.getElementById("dob").value;
             var dobRegExp = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/;
 
@@ -81,8 +87,9 @@ nextBtns.forEach((btn, index) => {
             } else {
                 document.getElementById("I-dob").style.display = "none";
             }
-        } else if (index === 3) {
-            // document.getElementById("I-storename").style.display = "block";
+        } 
+        // Validate Step 4
+        else if (index === 3) {
             var storename = document.getElementById("storeName").value.trim();
             var address = document.getElementById("storeAddress").value.trim();
             var nameRegExp = /^[a-zA-Z]+$/;
@@ -91,11 +98,9 @@ nextBtns.forEach((btn, index) => {
             if (!nameRegExp.test(storename)) {
                 document.getElementById("I-storename").style.display = "block";
                 valid = false;
-            }
-            else {
+            } else {
                 document.getElementById("I-storename").style.display = "none";
             }
-
 
             if (!addressRegExp.test(address)) {
                 document.getElementById("I-storeAddress").style.display = "block";
@@ -103,7 +108,6 @@ nextBtns.forEach((btn, index) => {
             } else {
                 document.getElementById("I-storeAddress").style.display = "none";
             }
-
         }
 
         if (valid) {
@@ -112,7 +116,6 @@ nextBtns.forEach((btn, index) => {
             updateProgressbar();
         }
     });
-
 });
 
 $("#password").on("focus", function () {
@@ -123,13 +126,11 @@ $("#password").on("blur", function () {
     $("#PassValidation").hide();
 });
 
-
 document.getElementById("Submit").disabled = true;
 
 $("#password").on("keyup", function () {
     var password = $(this).val();
-    var passwordRegex =
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if (passwordRegex.test(password)) {
         $("#PassValidation").css("background-color", "#d4edda");
         $("#PassValidation").css("color", "#155724");
@@ -142,8 +143,7 @@ $("#password").on("keyup", function () {
 $("#confirmPassword").on("input", function () {
     var password = $("#password").val();
     var repassword = $(this).val();
-    var passwordRegex =
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     if (passwordRegex.test(password)) {
         if (password === repassword) {
@@ -199,49 +199,86 @@ function updateProgressbar() {
         ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
 }
 
+// Attach event listener to the "Submit" button
 document.getElementById("Submit").addEventListener("click", function (event) {
-    event.preventDefault();
-    console.log("Submit button clicked");
+    event.preventDefault(); // Prevent default form submission
 
+    // Retrieve form data
     const formData = new FormData(document.getElementById("accountForm"));
-    console.log("FormData collected:", Object.fromEntries(formData));
 
-    // Convert formData to query string
+    // Convert form data to query parameters (URL-encoded format)
     const params = new URLSearchParams();
     formData.forEach((value, key) => {
         params.append(key, value);
     });
 
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", `Database/SellerPage.php?${params.toString()}`, true);
+    // Log the form data for debugging
+    console.log("Form Data (Encoded):", params.toString());
 
+    // Initialize XMLHttpRequest
+    const xhr = new XMLHttpRequest();
+
+    // Configure the GET request with the query parameters
+    xhr.open("GET", `Database/SellerPage.php?${params.toString()}`, true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    // Define the response handler
     xhr.onload = function () {
         if (xhr.status === 200) {
+            console.log("Raw Response:", xhr.responseText); // Debugging raw response
+
             try {
-                console.log("Response received:", xhr.responseText);
-                const response = JSON.parse(xhr.responseText);
+                const response = JSON.parse(xhr.responseText); // Parse JSON response
+                console.log("Parsed Response:", response); // Log parsed response
 
                 if (response.success) {
-                    // Redirect to index.html on success
-                    window.location.href = "index.html";
+                    // Show success message with SweetAlert2
+                    Swal.fire({
+                        title: "Account Created Successfully!",
+                        text: response.message,
+                        icon: "success",
+                        confirmButtonText: "Continue",
+                    }).then(() => {
+                        window.location.href = "index.html"; // Redirect to the homepage
+                    });
                 } else {
-                    // Alert error message if registration fails
-                    alert(response.message || "There was an issue creating your account.");
+                    // Show error message with SweetAlert2
+                    Swal.fire({
+                        title: "Error",
+                        text: response.message,
+                        icon: "error",
+                        confirmButtonText: "Try Again",
+                    });
                 }
             } catch (error) {
-                console.error("Error parsing JSON response:", error);
-                alert("An unexpected error occurred. Please try again later.");
+                // Handle JSON parsing error
+                console.error("Error Parsing JSON:", error.message);
+                Swal.fire({
+                    title: "Unexpected Error",
+                    text: "Could not parse server response. Please try again later.",
+                    icon: "error",
+                });
             }
         } else {
-            console.error("HTTP status error. Status:", xhr.status);
-            alert("Failed to submit the form. Please check your network and try again.");
+            // Handle HTTP errors
+            Swal.fire({
+                title: "HTTP Error",
+                text: `Failed to contact the server. Status: ${xhr.status}`,
+                icon: "error",
+            });
         }
     };
 
+    // Handle network or other errors
     xhr.onerror = function () {
-        console.error("A network error occurred during the request.");
-        alert("An error occurred while submitting the form. Please try again.");
+        Swal.fire({
+            title: "Network Error",
+            text: "Could not send the request. Please check your network connection.",
+            icon: "error",
+        });
     };
 
+    // Send the request
     xhr.send();
 });
+ 

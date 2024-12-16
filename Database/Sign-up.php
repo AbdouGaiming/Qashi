@@ -1,5 +1,6 @@
 <?php
 require 'database.php';
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // Sanitize and retrieve inputs
@@ -9,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $password = trim($_GET['password'] ?? '');
     $phone = trim($_GET['phone'] ?? '');
     $dob = trim($_GET['dob'] ?? '');
-    $user_type = 'User'; // Default user type
+    $user_type = 'Buyer'; // Default user type
 
     // Validate required fields
     if (empty($first_name) || empty($last_name) || empty($email) || empty($password)) {
@@ -38,12 +39,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // Hash the password
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Insert new user
+    // Insert new user into the database
     $insertQuery = "INSERT INTO users (firstname, lastname, email, password, phone, datebirth, user_type) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($insertQuery);
     $stmt->bind_param('sssssss', $first_name, $last_name, $email, $hashedPassword, $phone, $dob, $user_type);
 
     if ($stmt->execute()) {
+        // After successful insert, store the user id in session
+        $userId = $stmt->insert_id; // Get the ID of the newly created user
+        $_SESSION['user_id'] = $userId;
+
         echo json_encode(['success' => true, 'message' => 'Account created successfully.']);
     } else {
         echo json_encode(['success' => false, 'message' => 'Failed to create account.']);
@@ -54,6 +59,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 } else {
     echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
 }
-
-
-
+?>

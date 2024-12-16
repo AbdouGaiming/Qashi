@@ -33,6 +33,7 @@ nextBtns.forEach((btn, index) => {
     } else if (index === 1) {
       var phone = document.getElementById("phone").value.trim();
       var email = document.getElementById("email").value.trim();
+      email = email.toLowerCase();
       var phoneRegExp = /^(0(6|5|7|9)\d{8}|0(21|23|29|44|20)\d{6}|\+213(7|5|6|9)\d{8})$/;
       var emailRegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

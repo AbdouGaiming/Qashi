@@ -1,39 +1,47 @@
 <?php
-require_once 'database.php';
+require 'database.php';
+header('Content-Type: application/json');
 
+// Récupérer l'email et le mot de passe depuis la requête GET
+$email = $_GET['email'] ?? null;
+$password = $_GET['password'] ?? null;
 
-// Handle login request
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    file_put_contents("debug_log.txt", "PHP script accessed.\n", FILE_APPEND);
+// Valider les entrées
+if (!$email || !$password) {
+    echo json_encode(['status' => 'error', 'message' => 'Veuillez fournir un email et un mot de passe.']);
+    exit();
+}
 
-    $email = $_POST['email'] ?? '';
-    $password = $_POST['password'] ?? '';
+// Préparer et exécuter la requête SQL
+$query = "SELECT * FROM users WHERE email = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param('s', $email);
+$stmt->execute();
+$result = $stmt->get_result();
 
-    // Validate input
-    if (empty($email) || empty($password)) {
-        file_put_contents("debug_log.txt", "Validation failed: Missing fields.\n", FILE_APPEND);
-        echo json_encode(["status" => "error", "message" => "All fields are required."]);
-        exit;
-    }
+if ($result->num_rows === 1) {
+    $user = $result->fetch_assoc();
 
-    // Sanitize input
-    $email = $conn->real_escape_string($email);
-    $password = $conn->real_escape_string($password);
+    // Vérification du mot de passe
+    if (password_verify($password, $user['password'])) {
+        session_start();
+        $_SESSION['user_id'] = $user['user_id']; // Stocker l'ID utilisateur dans la session
+        $_SESSION['user_type'] = $user['user_type']; // Stocker le type d'utilisateur dans la session
 
-    file_put_contents("debug_log.txt", "Input sanitized. Email: $email\n", FILE_APPEND);
-
-    // Query to check user credentials
-    $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        file_put_contents("debug_log.txt", "User found: $email\n", FILE_APPEND);
-        echo json_encode(["status" => "success", "message" => "Login successful."]);
+        echo json_encode([
+            'status' => 'success',
+            'message' => 'Connexion réussie.',
+            'userType' => $user['user_type']
+        ]);
     } else {
-        file_put_contents("debug_log.txt", "User not found: $email\n", FILE_APPEND);
-        echo json_encode(["status" => "error", "message" => "Invalid email or password."]);
+        // Pour déboguer, afficher le mot de passe de la base de données (temporairement, pour test uniquement)
+        error_log("Mot de passe fourni : $password");
+        error_log("Mot de passe haché dans la base : " . $user['password']);
+        
+        echo json_encode(['status' => 'error', 'message' => 'Mot de passe incorrect.']);
     }
+} else {
+    echo json_encode(['status' => 'error', 'message' => 'Cet email n\'existe pas.']);
 }
 
 $conn->close();
-?>

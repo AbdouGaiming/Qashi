@@ -128,3 +128,106 @@ $(document).ready(function () {
         });
     });
 });
+
+
+///////AJAAX
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Fetch session details when the page loads
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "Database/GetSession.php", true);
+    
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            try {
+                const response = JSON.parse(xhr.responseText);
+                
+                if (response.success) {
+                    // Check user entry type (login or signup) and user ID
+                    const userId = response.data.user_id;
+                    const entryType = response.data.entry_type;
+
+                    if (!userId) {
+                        alert("User is not logged in. Redirecting to login page.");
+                        window.location.href = "login.html";
+                    } else {
+                        console.log(`User ID: ${userId}, Entry Type: ${entryType}`);
+                        // Perform actions based on entry type
+                        if (entryType === "login") {
+                            console.log("User entered via login.");
+                        } else if (entryType === "signup") {
+                            console.log("User entered via signup.");
+                        }
+                    }
+                } else {
+                    alert(response.message || "Failed to fetch session details.");
+                    window.location.href = "login.html"; // Redirect if session invalid
+                }
+            } catch (error) {
+                console.error("Error parsing JSON response:", error.message);
+                alert("An unexpected error occurred. Please try again later.");
+            }
+        } else {
+            console.error("HTTP Error:", xhr.status);
+            alert("Failed to fetch session details. Please try again later.");
+        }
+    };
+
+    xhr.onerror = function () {
+        console.error("Network Error");
+        alert("Could not connect to the server. Please check your internet connection.");
+    };
+    
+    xhr.send();
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Get the user_id from a global variable, session, or other storage mechanism
+    const userId = sessionStorage.getItem("user_id") || null; // Example: Fetch from session storage or replace with your logic
+
+    if (!userId) {
+        alert("User not logged in. Please log in to view your profile.");
+        window.location.href = "login.html"; // Redirect to login page
+        return; // Exit if no user_id is found
+    }
+
+    // Prepare the GET request with the user_id parameter
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", `Database/GetUserProfile.php?user_id=${encodeURIComponent(userId)}`, true);
+
+    // Define the response handler
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            try {
+                const response = JSON.parse(xhr.responseText); // Parse the JSON response
+
+                if (response.success) {
+                    // Populate placeholders with user data
+                    document.getElementById("firstname").placeholder = response.data.firstname || "N/A";
+                    document.getElementById("lastname").placeholder = response.data.lastname || "N/A";
+                    document.getElementById("datebirth").placeholder = response.data.datebirth || "N/A";
+                    document.getElementById("phone").placeholder = response.data.phone || "N/A";
+                    document.getElementById("email").placeholder = response.data.email || "N/A";
+                } else {
+                    // Show error message in case of failure
+                    alert(response.message || "Failed to load profile data.");
+                }
+            } catch (error) {
+                console.error("Error parsing JSON response:", error.message);
+                alert("An unexpected error occurred. Please try again later.");
+            }
+        } else {
+            console.error("HTTP Error:", xhr.status);
+            alert(`Failed to fetch user data. Server returned status: ${xhr.status}.`);
+        }
+    };
+
+    // Define the error handler for network issues
+    xhr.onerror = function () {
+        console.error("Network Error");
+        alert("Could not connect to the server. Please check your internet connection.");
+    };
+
+    // Send the request
+    xhr.send();
+});

@@ -1,19 +1,21 @@
 <?php
-require 'database.php';
+require ("database.php");
+session_start(); // Start the session
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    // Retrieve and sanitize inputs
-    $first_name = trim($_GET['firstname'] ?? '');
-    $last_name = trim($_GET['lastname'] ?? '');
-    $email = trim($_GET['email'] ?? '');
+    // Sanitize and retrieve inputs
+    $firstname = trim($_GET['firstname'] ?? '');
+    $lastname = trim($_GET['lastname'] ?? '');
     $phone = trim($_GET['phone'] ?? '');
+    $email = trim($_GET['email'] ?? '');
     $dob = trim($_GET['dob'] ?? '');
-    $store_name = trim($_GET['storeName'] ?? '');
-    $store_address = trim($_GET['storeAddress'] ?? '');
+    $storeName = trim($_GET['storeName'] ?? '');
+    $storeAddress = trim($_GET['storeAddress'] ?? '');
     $password = trim($_GET['password'] ?? '');
+    $user_type = 'Seller'; // Default user type
 
     // Validate required fields
-    if (empty($first_name) || empty($last_name) || empty($email) || empty($password) || empty($store_name) || empty($store_address)) {
+    if (empty($firstname) || empty($lastname) || empty($email) || empty($password) || empty($storeName) || empty($storeAddress)) {
         echo json_encode(['success' => false, 'message' => 'All fields are required.']);
         exit();
     }
@@ -24,8 +26,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         exit();
     }
 
+    // Database connection
+    // $conn = mysqli_connect('localhost', 'root', '', 'qashi'); // Replace with your DB credentials
+
+    // if (!$conn) {
+    //     die("Connection failed: " . mysqli_connect_error());
+    // }
+
     // Check for duplicate email
-    $query = "SELECT * FROM sellers WHERE email = ?";
+    $query = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('s', $email);
     $stmt->execute();
@@ -39,19 +48,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // Hash the password
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Insert new seller
-    $insertQuery = "INSERT INTO sellers (firstname, lastname, email, phone, dob, store_name, store_address, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($insertQuery);
-    $stmt->bind_param('ssssssss', $first_name, $last_name, $email, $phone, $dob, $store_name, $store_address, $hashedPassword);
+    // Insert data into users table
+    $userInsertQuery = "INSERT INTO users (firstname, lastname, datebirth, phone, email, password, user_type) 
+                        VALUES ('$firstname', '$lastname', '$dob', '$phone', '$email', '$hashedPassword', '$user_type')";
 
-    if ($stmt->execute()) {
-        echo json_encode(['success' => true, 'message' => 'Seller account created successfully.']);
+    if (mysqli_query($conn, $userInsertQuery)) {
+        // Get the new user's ID
+        $userId = mysqli_insert_id($conn);
+
+        // Insert data into stores table
+        $storeInsertQuery = "INSERT INTO stores (store_name, store_address, user_id) 
+                             VALUES ('$storeName', '$storeAddress', $userId)";
+
+        if (mysqli_query($conn, $storeInsertQuery)) {
+            // Store user details in the session
+            $_SESSION['user_id'] = $userId;
+           
+            echo json_encode(['success' => true, 'message' => 'Seller account and store created successfully']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Error creating the store']);
+        }
     } else {
-        echo json_encode(['success' => false, 'message' => 'Failed to create seller account.']);
+        echo json_encode(['success' => false, 'message' => 'Error creating the user account']);
     }
 
-    $stmt->close();
-    $conn->close();
+    // Close the database connection
+    mysqli_close($conn);
 } else {
-    echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
+    echo json_encode(['success' => false, 'message' => 'Invalid request method']);
 }
+?>
