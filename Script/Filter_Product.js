@@ -6,12 +6,34 @@ function filterProducts() {
 
     // Check if at least one filter value is provided
     if (category || color || size) {
-        // Redirect to the product page with the query string of the filter
+        // Prepare the query string of the filter
         const queryParams = [];
         if (category) queryParams.push(`category=${encodeURIComponent(category)}`);
+
+        // Handle checkbox filters dynamically
+        const categories = [];
+        const checkboxes = document.querySelectorAll('input[type="checkbox"][name="category"]');
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                categories.push(checkbox.value);
+            }
+        });
+        if (categories.length > 0) queryParams.push(`category=${encodeURIComponent(categories.join(','))}`);
+
         if (color) queryParams.push(`color=${encodeURIComponent(color)}`);
         if (size) queryParams.push(`size=${encodeURIComponent(size)}`);
-        window.location.href = `ProductPage.html?${queryParams.join('&')}`;
+        const queryString = queryParams.join('&');
+
+        // Make an AJAX request to the product page with the query string of the filter
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', `ProductPage.html?${queryString}`, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Update the product list with the response
+                document.getElementById('product-list').innerHTML = xhr.responseText;
+            }
+        };
+        xhr.send();
     } else {
         alert('Please select at least one filter option.');
     }

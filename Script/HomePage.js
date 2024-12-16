@@ -118,6 +118,7 @@ function loadCartItems() {
 }
 
 
+
 // Function to add product to cart
 function addToCart(id) {
     const xhr = new XMLHttpRequest();
@@ -182,7 +183,6 @@ function decreaseCartItem(id) {
 
     xhr.send(`id=${encodeURIComponent(id)}`);
 }
-
 
 
 // Function to increase cart item quantity
