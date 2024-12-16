@@ -47,7 +47,31 @@ nextBtns.forEach((btn, index) => {
         document.getElementById("I-email").style.display = "block";
         valid = false;
       } else {
-        document.getElementById("I-email").style.display = "none";
+        // AJAX request to check for duplicate email
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "Database/Sign-up(email ver).php", false); // Synchronous request to halt the process
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            if (!response.success) {
+              document.getElementById("I-email").textContent = response.message;
+              document.getElementById("I-email").style.display = "block";
+              valid = false;
+            } else {
+              document.getElementById("I-email").style.display = "none";
+            }
+          } else {
+            console.error("Error verifying email. Status:", xhr.status);
+          }
+        };
+
+        xhr.onerror = function () {
+          console.error("An error occurred while verifying the email.");
+        };
+
+        xhr.send(`email=${encodeURIComponent(email)}`);
       }
     } else if (index === 2) {
       var dob = document.getElementById("dob").value.trim();
@@ -67,6 +91,7 @@ nextBtns.forEach((btn, index) => {
     }
   });
 });
+
 
 $("#password").on("focus", function () {
   $("#PassValidation").show();
@@ -109,19 +134,6 @@ $("#confirmPassword").on("input", function () {
   }
 });
 
-document.getElementById("Submit").addEventListener("click", function () {
-  event.preventDefault();
-  Swal.fire({
-    title: "Account Created Successfully!",
-    text: "You just created your account successfully!",
-    icon: "success",
-    confirmButtonText: "Continue",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      document.getElementById("accountForm").submit();
-    }
-  });
-});
 
 document.getElementById("dob").addEventListener("input", function () {
   var dob = this.value.trim();
@@ -172,30 +184,53 @@ function updateProgressbar() {
 }
 
 
+// document.getElementById("Submit").addEventListener("click", function () {
+//   event.preventDefault();
+//   Swal.fire({
+//     title: "Account Created Successfully!",
+//     text: "You just created your account successfully!",
+//     icon: "success",
+//     confirmButtonText: "Continue",
+//   }).then((result) => {
+//     if (result.isConfirmed) {
+//       document.getElementById("accountForm").submit();
+//     }
+//   });
+// });
 
 //ajax request
 
 document.getElementById("Submit").addEventListener("click", function (event) {
   event.preventDefault();
+  console.log("Submit button clicked");
 
   const formData = new FormData(document.getElementById("accountForm"));
+  console.log("FormData collected:", Object.fromEntries(formData));
+
+  // Convert formData to query string
+  const params = new URLSearchParams();
+  formData.forEach((value, key) => {
+    params.append(key, value);
+  });
 
   const xhr = new XMLHttpRequest();
-  xhr.open("POST", "Database/UserPage.php", true);
+  xhr.open("GET", `Database/Sign-up.php?${params.toString()}`, true);
 
   xhr.onload = function () {
     if (xhr.status === 200) {
       try {
+        console.log("Response received:", xhr.responseText);
         const response = JSON.parse(xhr.responseText);
+
         if (response.success) {
           Swal.fire({
             title: "Account Created Successfully!",
-            text: response.message || "You just created your account successfully!",
+            text: response.message || "Your account has been created successfully!",
             icon: "success",
             confirmButtonText: "Continue",
           }).then((result) => {
             if (result.isConfirmed) {
-              window.location.href = "index.html"; // Redirect to another page if needed
+              window.location.href = "index.html"; // Redirect after success
             }
           });
         } else {
@@ -207,7 +242,7 @@ document.getElementById("Submit").addEventListener("click", function (event) {
           });
         }
       } catch (error) {
-        console.error("Error parsing response:", error);
+        console.error("Error parsing JSON response:", error);
         Swal.fire({
           title: "Error",
           text: "An unexpected error occurred. Please try again later.",
@@ -216,7 +251,7 @@ document.getElementById("Submit").addEventListener("click", function (event) {
         });
       }
     } else {
-      console.error("Failed to submit form. Status:", xhr.status);
+      console.error("HTTP status error. Status:", xhr.status);
       Swal.fire({
         title: "Error",
         text: "Failed to submit the form. Please check your network and try again.",
@@ -227,7 +262,7 @@ document.getElementById("Submit").addEventListener("click", function (event) {
   };
 
   xhr.onerror = function () {
-    console.error("An error occurred while submitting the form.");
+    console.error("A network error occurred during the request.");
     Swal.fire({
       title: "Error",
       text: "An error occurred while submitting the form. Please try again.",
@@ -236,5 +271,7 @@ document.getElementById("Submit").addEventListener("click", function (event) {
     });
   };
 
-  xhr.send(formData);
+  xhr.send();
 });
+
+
