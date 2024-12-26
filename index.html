@@ -55,75 +55,183 @@
 
   <div class="sidebar" id="sidebar">
     <div>
-      <form>
-        <script src="Script/Filter_Product.js"></script>
+      <form id="filterForm">
         <button type="submit" class="filter-button">Filter</button>
         <label for="category">Category</label>
         <label>Men</label>
-        <input type="checkbox" id="men" name="men" value="men">
+        <input type="radio" id="men" name="category" value="men">
         <label>Women</label>
-        <input type="checkbox" id="Women" name="Women" value="women">
-        <label>Kids</label>
-        <input type="checkbox" id="Kids" name="Kids" value="kids">
+        <input type="radio" id="women" name="category" value="women">
+        <label>Boys</label>
+        <input type="radio" id="boys" name="category" value="boys">
+        <label>Girls</label>
+        <input type="radio" id="girls" name="category" value="girls">
         <input type="text" id="color" name="color" placeholder="Filter by color">
         <input type="text" id="size" name="size" placeholder="Filter by size">
       </form>
     </div>
-    
+
     <div>
       <style>
+        /* Filter Section Styling */
+        #filterForm {
+          background-color: #f8f8f8;
+          padding: 20px;
+          margin: 20px auto;
+          border-radius: 8px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+          max-width: 1200px;
+        }
+
+        /* Filter Section Labels */
+        #filterForm label {
+          font-size: 16px;
+          font-weight: 600;
+          color: #333;
+          margin-right: 10px;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          cursor: pointer;
+        }
+
+        /* Radio Buttons and Inputs */
+        #filterForm input[type="radio"] {
+          accent-color: #4CAF50;
+          /* Custom green color */
+          transform: scale(1.2);
+        }
+
+        #filterForm input[type="text"],
+        #filterForm input[type="submit"] {
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          padding: 8px 12px;
+          font-size: 14px;
+          outline: none;
+          transition: all 0.3s ease;
+        }
+
+        /* Text Fields */
+        #filterForm input[type="text"] {
+          width: 200px;
+        }
+
+        #filterForm input[type="text"]:focus {
+          border-color: #4CAF50;
+          box-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
+        }
+
+        /* Submit Button */
+        #filterForm input[type="submit"],
+        .filter-button {
+          background-color: #4CAF50;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 16px;
+          padding: 8px 20px;
+          transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #filterForm input[type="submit"]:hover,
+        .filter-button:hover {
+          background-color: #45a049;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Layout for Filter Form */
+        @media screen and (max-width: 768px) {
+          #filterForm {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+
+          #filterForm input[type="text"] {
+            width: 100%;
+          }
+        }
+
         .category {
           position: relative;
           display: inline-block;
           margin-right: 20px;
         }
-    
+
         .dropdown {
-          display: none; /* Default to hidden */
+          display: none;
+          /* Default to hidden */
           position: absolute;
-          top: 100%; /* Dropdown should appear below the category link */
+          top: 100%;
+          /* Dropdown should appear below the category link */
           left: 0;
           background-color: #f9f9f9;
           min-width: 160px;
           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
           z-index: 1;
         }
-    
+
         .dropdown a {
           color: black;
           padding: 12px 16px;
           text-decoration: none;
           display: block;
         }
-    
+
         .dropdown a:hover {
           background-color: #f1f1f1;
         }
+
+        .back-button-container {
+          text-align: center;
+          margin: 20px 0;
+        }
+
+        .modern-back-button {
+          background-color: #4CAF50;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          padding: 10px 20px;
+          font-size: 16px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+
+        .modern-back-button:hover {
+          background-color: #45a049;
+        }
       </style>
-    
+
       <script>
         // Ensure JavaScript runs after the page is fully loaded
-        window.onload = function() {
+        window.onload = function () {
           document.querySelectorAll('.category').forEach(category => {
             const link = category.querySelector('a');
             const dropdown = category.querySelector('.dropdown');
-    
+
             link.addEventListener('click', (e) => {
               e.preventDefault(); // Prevent default link action
               e.stopPropagation(); // Stop the click event from bubbling up to the document
-    
+
               // Hide all dropdowns except the one clicked
               document.querySelectorAll('.dropdown').forEach(d => {
                 if (d !== dropdown) {
                   d.style.display = 'none';
                 }
               });
-    
+
               // Toggle the current dropdown's visibility
               dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
             });
           });
-    
+
           // Close dropdowns when clicking outside of a category
           document.addEventListener('click', (e) => {
             if (!e.target.closest('.category')) {
@@ -134,7 +242,7 @@
           });
         };
       </script>
-    
+
       <div class="category" data-category="men">
         <a href="#">Men</a>
         <div class="dropdown" id="men-dropdown">
@@ -160,7 +268,7 @@
           <a href="#">Accessories</a>
         </div>
       </div>
-    
+
       <div class="category" data-category="women">
         <a href="#">Women</a>
         <div class="dropdown" id="women-dropdown">
@@ -187,7 +295,7 @@
           <a href="#">Accessories</a>
         </div>
       </div>
-    
+
       <div class="category" data-category="kids">
         <a href="#">Kids</a>
         <div class="dropdown" id="kids-dropdown">
@@ -197,8 +305,8 @@
         </div>
       </div>
     </div>
-    
-        
+
+
   </div>
 </body>
 <footer class="footer">
