@@ -1,14 +1,24 @@
 <?php
+session_start(); // Start the session
+
 require 'database.php'; // Include the database connection
 header("Content-Type: application/json");
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    // Check if user_id is set in the session
+    if (!isset($_SESSION['user_id'])) {
+        echo json_encode(['success' => false, 'message' => 'User not logged in.']);
+        exit();
+    }
+
+    // Retrieve user_id from session
+    $user_id = $_SESSION['user_id'];
+
     // Sanitize and retrieve inputs
     $product_id = intval($_GET['product_id']);
     $quantity = intval($_GET['quantity']);
     $size = trim($_GET['size']);
     $color = trim($_GET['color']);
-    $user_id = 16; // Replace with the actual user session ID
 
     // Validate required inputs
     if (empty($product_id) || empty($quantity) || empty($size) || empty($color)) {
