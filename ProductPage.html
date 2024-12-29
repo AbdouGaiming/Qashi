@@ -1,92 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="Style/Menu.css" />
-    <link rel="stylesheet" href="Style/Product_page.css" />
-    <link rel="stylesheet" href="Style/Cart.css">
-    <script src="Script/HomePage.js"></script>
-    <title>Qashi</title>
-  </head>
-  <body>
-    <script src="Script/ProductPage.js"></script>
-    <script defer src="Script/Menu.js"></script>
-    <script defer src="Script/Product_img.js"></script>
 
-    <div class="top-border">
-      <div class="hamburger" onclick="toggleSidebar()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <a href="index.html"><img class="img" src="ICONS/Qashi.png" /></a>
-      <div class="search-container">
-        <input type="text" class="search-input" placeholder="Search..." />
-        <button class="search-button">Search for Product</button>
-      </div>
-      <img
-        class="heart-icon"
-        src="ICONS/heart-button.png"
-        onclick="window.location.href='Favorite-items.html'; return false;"
-      />
-      <img
-        src="ICONS/cart-button.png"
-        class="cart-icon"
-        onclick="toggleCartDropdown()"
-      />
-      <div class="cart-icon">
-        <div class="cart-dropdown" id="cartDropdown">
-          <p>Cart Items :</p>
-          <div class="cart-item">Product 1 <span>$10.00</span></div>
-          <div class="cart-item">Product 2 <span>$15.00</span></div>
-          <div class="cart-item">Product 3 <span>$20.00</span></div>
-        </div>
-      </div>
-      <a href="Log-in.html"><img class="account-icon" src="ICONS/Account-button.png" /></a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="Style/Menu.css" />
+  <link rel="stylesheet" href="Style/Product_page.css" />
+  <link rel="stylesheet" href="Style/Cart.css">
+  <script src="Script/HomePage.js"></script>
+  <title>Qashi</title>
+</head>
+
+<body>
+  <script src="Script/ProductPage.js"></script>
+  <script defer src="Script/Menu.js"></script>
+  <script defer src="Script/Product_img.js"></script>
+
+  <div class="top-border">
+    <div class="hamburger" onclick="toggleSidebar()">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-    
-
-    <div class="container">
-      <div class="pagination">
-        <a href="Index.html">Home</a> ><a href="ProductPage.html"> Jacket</a>
-      </div>
-      <!-- product section -->
-      <section class="product-container">
-      </section>
-
-      <script src="js/cart.js"></script>
+    <a href="index.html"><img class="img" src="ICONS/Qashi.png" /></a>
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="Search..." />
+      <button class="search-button">Search for Product</button>
     </div>
-
-    <!-- Horizontal Sidebar -->
-    <div class="sidebar" id="sidebar">
-      <div>
-        <form>
-          <script src="Script/Filter_Product.js"></script>
-          <button type="submit" class="filter-button">Filter</button>
-          <label for="category">Category</label>
-          <label>Men</label>
-          <input type="checkbox" id="men" name="men" value="men">
-          <label>Women</label>
-          <input type="checkbox" id="Women" name="Women" value="women">
-          <label>Kids</label>
-          <input type="checkbox" id="Kids" name="Kids" value="kids">
-          <label for="color">Color</label>
-          <input type="text" id="color" name="color" placeholder="color">
-          <label for="size">Size</label>
-          <input type="text" id="size" name="size" placeholder="size">
-        </form>
+    <img class="heart-icon" src="ICONS/heart-button.png"
+      onclick="window.location.href='Favorite-items.html'; return false;" />
+    <img src="ICONS/cart-button.png" class="cart-icon" onclick="toggleCartDropdown()" />
+    <div class="cart-icon">
+      <div class="cart-dropdown" id="cartDropdown">
+        <p>Cart Items :</p>
+        <div class="cart-item">Product 1 <span>$10.00</span></div>
+        <div class="cart-item">Product 2 <span>$15.00</span></div>
+        <div class="cart-item">Product 3 <span>$20.00</span></div>
       </div>
-      <a href="#" id="Men">Men</a>
-      <a href="#" id="Women">Women</a>
-      <a href="#" id="Kids">Kids</a>
-      </div>  
     </div>
-  </body>
+    <a href="Log-in.html"><img class="account-icon" src="ICONS/Account-button.png" /></a>
+  </div>
+
+
+  <div class="container">
+    <div class="pagination">
+      <a href="Index.html">Home</a> ><a href="ProductPage.html"> Jacket</a>
+    </div>
+    <!-- product section -->
+    <section class="product-container">
+    </section>
+
+    <script src="js/cart.js"></script>
+  </div>
+
+  <!-- Horizontal Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <div>
+      <form>
+        <script src="Script/Filter_Product.js"></script>
+        <button type="submit" class="filter-button">Filter</button>
+        <label for="category">Category</label>
+        <label>Men</label>
+        <input type="checkbox" id="men" name="men" value="men">
+        <label>Women</label>
+        <input type="checkbox" id="Women" name="Women" value="women">
+        <label>Kids</label>
+        <input type="checkbox" id="Kids" name="Kids" value="kids">
+        <label for="color">Color</label>
+        <input type="text" id="color" name="color" placeholder="color">
+        <label for="size">Size</label>
+        <input type="text" id="size" name="size" placeholder="size">
+      </form>
+    </div>
+    <a href="#" id="Men">Men</a>
+    <a href="#" id="Women">Women</a>
+    <a href="#" id="Kids">Kids</a>
+  </div>
+  </div>
+  <style>
+
+  </style>
+</body>
+
 </html>

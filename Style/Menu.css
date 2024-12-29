@@ -388,3 +388,144 @@ a {
   padding: 10px;
   color: black;
 }
+
+/* Updated styles for the left-aligned filter sidebar */
+.filter-sidebar {
+  width: 350px;
+  /* Large width */
+  background: white;
+  padding: 30px;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  left: 0;
+  top: 150px;
+  /* Adjust based on your header height */
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 100;
+  border-right: 1px solid #e0e0e0;
+}
+
+.filter-section {
+  margin-bottom: 35px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 25px;
+}
+
+.filter-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.filter-radio {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #757575;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
+
+.filter-radio:checked {
+  border-color: #4CAF50;
+}
+
+.filter-radio:checked::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #4CAF50;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.filter-label {
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Adjust main content to make room for sidebar */
+.product-container {
+  margin-left: 370px;
+  /* sidebar width + some spacing */
+  padding: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .filter-sidebar {
+    width: 300px;
+  }
+
+  .product-container {
+    margin-left: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .filter-sidebar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: -100%;
+    transition: left 0.3s ease;
+  }
+
+  .filter-sidebar.active {
+    left: 0;
+  }
+
+  .product-container {
+    margin-left: 0;
+  }
+}
+
+/* Hover effects */
+.filter-item:hover .filter-label {
+  color: #4CAF50;
+}
+
+.filter-radio:hover {
+  border-color: #4CAF50;
+}
+
+/* Hide scrollbar but keep functionality */
+.filter-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.filter-sidebar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.filter-sidebar::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.filter-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

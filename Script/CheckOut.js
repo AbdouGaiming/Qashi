@@ -83,3 +83,40 @@ document.getElementById("Submit").addEventListener("click", function () {
     });
   }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  fetchCartItems();
+});
+function fetchCartItems() {
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', 'Database/fetch_cart_items.php', true);
+  xhr.onload = function () {
+    if (xhr.status === 200 && xhr.readyState === 4) {
+      const data = JSON.parse(xhr.responseText);
+      const cartContainer = document.querySelector('.col-25 .container');
+      let cartHTML = '<h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>' + data.length + '</b></span></h4>';
+      let total = 0;
+      data.forEach(item => {
+        // Calculate the total for each product (price * quantity)
+        const itemTotal = parseFloat(item.price) * parseInt(item.quantity);
+        total += itemTotal;
+        // Add the product to the cart HTML
+        cartHTML += `
+<p>
+${item.name} (x${item.quantity}) 
+<span class="price">$${itemTotal.toFixed(2)}</span>
+</p>
+`;
+      });
+      // Round the total to two decimal places
+      total = Math.round(total * 100) / 100;
+      // Add the total to the cart HTML
+      cartHTML += `<hr><p>Total <span class="price" style="color:black"><b>$${total.toFixed(2)}</b></span></p>`;
+      // Update the cart container with the new HTML
+      cartContainer.innerHTML = cartHTML;
+    } else {
+      console.error('Error fetching cart items.');
+    }
+  };
+  xhr.send();
+}
