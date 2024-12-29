@@ -29,8 +29,13 @@ window.onclick = function (event) {
 };
 
 function generateFilterSidebar() {
+  
   // Categories data structure
   const categories = {
+    // Represents different categories in the sidebar.
+    // Each key is a category identifier, and its value contains:
+    // - title: The display name of the category.
+    // - items: An array of strings, representing filter options for the category.
     outerwear: {
       title: "Outerwear",
       items: ["Jackets", "Coats", "Vests", "Bombers"]
@@ -78,7 +83,7 @@ function generateFilterSidebar() {
       // Add title
       const title = document.createElement('h3');
       title.className = 'filter-title';
-      title.textContent = category.title;
+      title.textContent = category.title; // Display the category title as a header
       section.appendChild(title);
 
       // Add filter group
@@ -88,29 +93,29 @@ function generateFilterSidebar() {
       // Add items
       category.items.forEach(item => {
         const label = document.createElement('label');
-        label.className = 'filter-item';
+        label.className = 'filter-item'; // Wrapper for the input and label text
 
         const input = document.createElement('input');
-        input.type = 'radio';
-        input.name = `category-${key}`;
+        input.type = 'radio'; // Ensures only one filter can be selected per category
+        input.name = `category-${key}`; // Groups radio buttons by category
         input.className = 'filter-radio';
-        input.value = item.toLowerCase().replace(/\s+/g, '-');
+        input.value = item.toLowerCase().replace(/\s+/g, '-'); // Generates a value usable for filtering
 
         const span = document.createElement('span');
-        span.className = 'filter-label';
-        span.textContent = item;
+        span.className = 'filter-label'; // Styles for the label text
+        span.textContent = item; // Display the filter option name
 
-        label.appendChild(input);
-        label.appendChild(span);
-        group.appendChild(label);
+        label.appendChild(input); // Attach the input to the label
+        label.appendChild(span); // Attach the text to the label
+        group.appendChild(label); // Add the label to the group
       });
 
-      section.appendChild(group);
-      filterContainer.appendChild(section);
+      section.appendChild(group); // Add the group to the section
+      filterContainer.appendChild(section); // Add the section to the container
     }
 
     // Add the filter container to the sidebar
-    sidebar.appendChild(filterContainer);
+    sidebar.appendChild(filterContainer); // Append the fully constructed filter sidebar to the DOM
   }
 
   // Add the CSS
@@ -210,18 +215,18 @@ function generateFilterSidebar() {
 
   // Add styles to document
   const styleSheet = document.createElement('style');
-  styleSheet.textContent = styles;
+  styleSheet.textContent = styles; // Attach the CSS styles dynamically
   document.head.appendChild(styleSheet);
 
   // Initialize the filter sidebar
-  generateFilterSidebar();
+  generateFilterSidebar(); // Call the function to build and display the sidebar
 
   // Add event listeners for radio buttons
   document.querySelectorAll('.filter-radio').forEach(radio => {
     radio.addEventListener('change', function (e) {
-      const category = this.name.replace('category-', '');
-      const value = this.value;
-      console.log(`Selected ${value} in ${category}`);
+      const category = this.name.replace('category-', ''); // Extract the category name from the radio input
+      const value = this.value; // Get the selected filter value
+      console.log(`Selected ${value} in ${category}`); // Log the selected filter for debugging
       // Add your filter logic here
     });
   });
