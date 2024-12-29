@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="Style/Product_List.css" />
   <link rel="stylesheet" href="Style/Cart.css" />
   <link rel="stylesheet" href="Style/Footer.css" />
+  <link rel="stylesheet" href="Style/Feltring.css" />
 
   <script src="Script/HomePage.js"></script>
 
@@ -50,61 +51,28 @@
   </div>
 
   <div class="container">
-    <div id="productContainer" class="product-container"></div>
+    <div class="product-container" id="productContainer"></div>
   </div>
 
   <div class="sidebar" id="sidebar">
-    <div class="mwc-container">  
-    <a href="#" id="Men">Men</a>
-      <ul>
-        <li><a href="#">Accessories</a></li>
-        <li><a href="#">Vests</a></li>
-        <li><a href="#">Jackets</a></li>
-        <li><a href="#">Shirts</a></li>
-        <li><a href="#">T-shirts</a></li>
-        <li><a href="#">Polos</a></li>
-        <li><a href="#">Sweats</a></li>
-        <li><a href="#">Hoodies</a></li>
-        <li><a href="#">Pants</a></li>
-        <li><a href="#">Jeans</a></li>
-        <li><a href="#">Shorts</a></li> 
-        <li><a href="#">Shoes</a></li>
-        <li><a href="#">Sneakers</a></li>
-        <li><a href="#">Boots</a></li> 
-      </ul>
+    <div>
+      <form id="filterForm">
+        <button type="submit" class="filter-button">Filter</button>
+        <label for="category">Category</label>
+        <label>Men</label>
+        <input type="radio" id="men" name="category" value="men">
+        <label>Women</label>
+        <input type="radio" id="women" name="category" value="women">
+        <label>Boys</label>
+        <input type="radio" id="boys" name="category" value="boys">
+        <label>Girls</label>
+        <input type="radio" id="girls" name="category" value="girls">
+        <input type="text" id="color" name="color" placeholder="Filter by color">
+        <input type="text" id="size" name="size" placeholder="Filter by size">
+      </form>
     </div>
-    <div class="mwc-container">  
-    <a href="#" id="Women">Women</a>
-      <ul>
-        <li><a href="#">Accessories</a></li>
-        <li><a href="#">Shirts</a></li>
-        <li><a href="#">Tops</a></li>
-        <li><a href="#">Bodys</a></li>
-        <li><a href="#">Blouses</a></li>
-        <li><a href="#">T-shirts</a></li>
-        <li><a href="#">Sweats</a></li>
-        <li><a href="#">Hoodies</a></li>
-        <li><a href="#">Cardigans</a></li>
-        <li><a href="#">Pants</a></li>
-        <li><a href="#">Jeans</a></li>
-        <li><a href="#">Robes</a></li>
-        <li><a href="#">Skirts</a></li>  
-        <li><a href="#">Shoes</a></li>
-        <li><a href="#">Sneakers</a></li>
-        <li><a href="#">Boots</a></li> 
-      </ul>
-    </div>
-    <a href="#" id="Boys">Boys</a>
-      <ul>
-        <li><a href="#">Accessories</a></li>
-        <li><a href="#">1-6 years old</a></li>
-        <li><a href="#">6-14 years old</a></li>
-      </ul>
-    </div>
-    <a href="#" id="Girls">Girls</a>
-      <ul>
-      </ul>
-</div>
+  </div>
+
 </body>
 <footer class="footer">
   <div class="footer-container">

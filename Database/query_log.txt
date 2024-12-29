@@ -1,0 +1,2174 @@
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => women
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND pv.color = ? - Array
+(
+    [0] => blue
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => women
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => kids
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => girls
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => boys
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => women
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => boys
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => girls
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => girls
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => women
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => girls
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? AND pv.color = ? - Array
+(
+    [0] => girls
+    [1] => red
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     - Array
+(
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND pv.color = ? - Array
+(
+    [0] => red
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND pv.size = ? - Array
+(
+    [0] => XL
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND pv.size = ? - Array
+(
+    [0] => XL
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND pv.size = ? - Array
+(
+    [0] => XL
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND pv.size = ? - Array
+(
+    [0] => XL
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND pv.size = ? - Array
+(
+    [0] => XL
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND pv.size = ? - Array
+(
+    [0] => XL
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? AND pv.size = ? - Array
+(
+    [0] => men
+    [1] => XL
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? AND pv.size = ? - Array
+(
+    [0] => men
+    [1] => XL
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => women
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+
+
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.price, 
+            p.category, 
+            pv.color, 
+            pv.size, 
+            p.image_url
+        FROM 
+            products p
+        LEFT JOIN 
+            product_variants pv 
+        ON 
+            p.product_id = pv.product_id
+        WHERE 1=1
+     AND p.category = ? - Array
+(
+    [0] => men
+)
+

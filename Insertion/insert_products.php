@@ -1,5 +1,5 @@
 <?php
-require_once 'database.php';
+require_once '../Database/database.php';
 
 $sql = "
 INSERT INTO products (name, description, price, stock, category, sub_category, image_url) VALUES

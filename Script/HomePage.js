@@ -117,6 +117,46 @@ function loadCartItems() {
     xhr.send();
 }
 
+
+
+// Function to add product to cart
+function addToCart(productId, quantity, size, color) {
+    const params = new URLSearchParams({
+        product_id: productId,
+        quantity: quantity,
+        size: size,
+        color: color
+    });
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `Database/add_to_cart.php?${params.toString()}`, true);
+
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            try {
+                const response = JSON.parse(xhr.responseText);
+                if (response.success) {
+                    // Refresh the cart after successful addition
+                    loadCartItems();
+                } else {
+                    console.error('Error adding to cart:', response.message);
+                }
+            } catch (error) {
+                console.error('Error parsing add-to-cart response:', error);
+            }
+        } else {
+            console.error('Failed to add to cart. Status:', xhr.status);
+        }
+    };
+
+    xhr.onerror = function () {
+        console.error('An error occurred while adding to the cart.');
+    };
+
+    xhr.send();
+}
+
+
 // Function to decrease cart item quantity
 function decreaseCartItem(id) {
     const xhr = new XMLHttpRequest();
@@ -148,7 +188,6 @@ function decreaseCartItem(id) {
 
     xhr.send(`id=${encodeURIComponent(id)}`);
 }
-
 
 
 // Function to increase cart item quantity
@@ -239,84 +278,123 @@ function displayProducts(products) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    const sidebarLinks = document.querySelectorAll('#sidebar a');
 
-    sidebarLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault(); // Prevent default anchor behavior
-            const category = this.id.toLowerCase(); // Get category ID (e.g., 'Men')
+let backButtonContainer = null; // Track the back button container
 
-            // Send AJAX request
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', `Database/fetch_products_by_category.php?category=${encodeURIComponent(category)}`, true);
+document.addEventListener("DOMContentLoaded", function () {
+    const filterForm = document.querySelector("#filterForm");
+    const productContainer = document.getElementById("productContainer");
 
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    try {
-                        const products = JSON.parse(xhr.responseText);
-                        if (products.error) {
-                            console.error(products.error);
-                            return;
+    filterForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Collect filter values
+        const category = document.querySelector('input[name="category"]:checked')?.value || "";
+        const subcategory = document.querySelector('input[name="subcategory"]:checked')?.value || "";
+        const color = document.getElementById("color").value.trim();
+        const size = document.getElementById("size").value.trim();
+
+        // Build query parameters
+        const params = new URLSearchParams();
+        if (category) params.append("category", category);
+        if (subcategory) params.append("subcategory", subcategory);
+        if (color) params.append("color", color);
+        if (size) params.append("size", size);
+
+        console.log("Filter Parameters:", params.toString());
+
+        // Send AJAX GET request
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `Database/fetch_products_by_category.php?${params.toString()}`, true);
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                try {
+                    const response = JSON.parse(xhr.responseText);
+
+                    if (response.success && response.products.length > 0) {
+                        // Display products
+                        displayProducts(response.products);
+
+                        // Add back button only once
+                        if (!backButtonContainer) {
+                            backButtonContainer = document.createElement("div");
+                            backButtonContainer.className = "back-button-container";
+
+                            const backButton = document.createElement("button");
+                            backButton.textContent = "Show All Products";
+                            backButton.className = "modern-back-button";
+                            backButton.onclick = function () {
+                                loadProducts(); // Function to load all products
+                                clearFilters(); // Function to clear all filters                                
+                                backButtonContainer.remove(); // Remove the back button
+                                backButtonContainer = null; // Reset the reference
+                            };
+
+                            backButtonContainer.appendChild(backButton);
+                            productContainer.parentNode.insertBefore(backButtonContainer, productContainer);
                         }
-
-                        // Render products
-                        renderProducts(products);
-                    } catch (error) {
-                        console.error('Error parsing response:', error);
+                    } else {
+                        productContainer.innerHTML = "<p>No products found matching your filters.</p>";
                     }
-                } else {
-                    console.error('Failed to fetch products. Status:', xhr.status);
+                } catch (error) {
+                    console.error("Error Parsing JSON:", error.message);
+                    productContainer.innerHTML = "<p>Error loading products. Please try again later.</p>";
                 }
-            };
+            } else {
+                console.error("Server Error. Status:", xhr.status);
+                productContainer.innerHTML = "<p>Failed to fetch products. Please try again later.</p>";
+            }
+        };
 
-            xhr.onerror = function () {
-                console.error('An error occurred while fetching products.');
-            };
+        xhr.onerror = function () {
+            console.error("Network Error during AJAX request.");
+            productContainer.innerHTML = "<p>Network error. Please check your connection and try again.</p>";
+        };
 
-            xhr.send();
-        });
+        xhr.send();
     });
+
+    function clearFilters() {
+        // Reset all form inputs
+        filterForm.reset();
+        const checkedRadios = document.querySelectorAll('input[name="category"]:checked, input[name="subcategory"]:checked');
+        checkedRadios.forEach(radio => radio.checked = false);
+        document.getElementById("color").value = "";
+        document.getElementById("size").value = "";
+        console.log("Filters cleared");
+    }
 });
 
-function renderProducts(products) {
-    const productContainer = document.getElementById('productContainer');
-    productContainer.innerHTML = ''; // Clear existing products
+// Ensure JavaScript runs after the page is fully loaded
+window.onload = function () {
+    document.querySelectorAll('.category').forEach(category => {
+        const link = category.querySelector('a');
+        const dropdown = category.querySelector('.dropdown');
 
-    if (products.length === 0) {
-        productContainer.innerHTML = '<p>No products found for this category.</p>';
-        return;
-    }
+        link.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default link action
+            e.stopPropagation(); // Stop the click event from bubbling up to the document
 
-    // add a button to go back to all products
-    const backButton = document.createElement('button');
-    backButton.textContent = 'Show All Products';
-    backButton.className = 'modern-back-button';
-    backButton.onclick = function () {
-        loadProducts(); // Function to load all products
-        backButtonContainer.remove(); // Remove the back button
-    };
+            // Hide all dropdowns except the one clicked
+            document.querySelectorAll('.dropdown').forEach(d => {
+                if (d !== dropdown) {
+                    d.style.display = 'none';
+                }
+            });
 
-    // Add the button to a container for proper alignment and spacing
-    const backButtonContainer = document.createElement('div');
-    backButtonContainer.className = 'back-button-container';
-    backButtonContainer.appendChild(backButton);
-
-    productContainer.parentNode.insertBefore(backButtonContainer, productContainer);
-
-
-
-    products.forEach(product => {
-        const productDiv = document.createElement('div');
-        productDiv.className = 'product';
-        productDiv.innerHTML = `
-            <img src='${product.image_url}' alt='${product.name}' class='product-img' />
-            <h2 class='product-name'>${product.name}</h2>
-            <p class='product-price'>$${product.price}</p>
-            <button onclick="window.location.href='ProductPage.html?id=${product.product_id}';" class="view-product-button">
-                View Product
-            </button>
-        `;
-        productContainer.appendChild(productDiv);
+            // Toggle the current dropdown's visibility
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        });
     });
-}
+
+    // Close dropdowns when clicking outside of a category
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.category')) {
+            document.querySelectorAll('.dropdown').forEach(dropdown => {
+                dropdown.style.display = 'none';
+            });
+        }
+    });
+};
+
