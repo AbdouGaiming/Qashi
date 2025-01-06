@@ -1,6 +1,21 @@
 document.addEventListener('DOMContentLoaded', function () {
     loadDashboardData();
+    checkSession();
 });
+// ...existing code...
+
+function checkSession() {
+    fetch('Database/GetSession.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log(`Session active. User ID: ${data.data.user_id}`);
+            } else {
+                console.log('No active session found. Please log in.');
+            }
+        })
+        .catch(error => console.error('Error checking session:', error));
+}
 
 function loadDashboardData() {
     fetch('Database/fetch_dashboard.php')
