@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!userId) {
         alert("User not logged in. Please log in to view your profile.");
-        window.location.href = "login.html"; // Redirect to login page
+        window.location.href = "Log-in.html"; // Redirect to login page
         return; // Exit if no user_id is found
     }
 

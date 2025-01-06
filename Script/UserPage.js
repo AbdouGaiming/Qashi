@@ -33,7 +33,6 @@ nextBtns.forEach((btn, index) => {
     } else if (index === 1) {
       var phone = document.getElementById("phone").value.trim();
       var email = document.getElementById("email").value.trim();
-      email = email.toLowerCase();
       var phoneRegExp = /^(0(6|5|7|9)\d{8}|0(21|23|29|44|20)\d{6}|\+213(7|5|6|9)\d{8})$/;
       var emailRegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -50,10 +49,13 @@ nextBtns.forEach((btn, index) => {
       } else {
         // AJAX request to check for duplicate email
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "Database/Sign-up(email ver).php", false); // Synchronous request to halt the process
+        xhr.open("GET", "http://localhost/webprojectL3/Qashi/Database/Signup-email-ver.php?email=" + encodeURIComponent(email), true);
+
+ // Synchronous request to halt the process
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
         xhr.onload = function () {
+          console.log(xhr.responseText); // Afficher la réponse brute du serveur
           if (xhr.status === 200) {
             const response = JSON.parse(xhr.responseText);
             if (!response.success) {
@@ -203,64 +205,69 @@ function updateProgressbar() {
 
 document.getElementById("Submit").addEventListener("click", function (event) {
   event.preventDefault();
-  console.log("Submit button clicked");
 
   const formData = new FormData(document.getElementById("accountForm"));
-  console.log("FormData collected:", Object.fromEntries(formData));
-
-  // Convert formData to query string
-  const params = new URLSearchParams();
-  formData.forEach((value, key) => {
-    params.append(key, value);
-  });
-
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", `Database/Sign-up.php?${params.toString()}`, true);
+  xhr.open("GET", "Database/Sign-up(email ver).php?email=" + encodeURIComponent(email), true);
+
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");  // Utiliser le bon header
 
   xhr.onload = function () {
     if (xhr.status === 200) {
       try {
-        console.log("Response received:", xhr.responseText);
-        const response = JSON.parse(xhr.responseText);
-
-        if (response.success) {
-          Swal.fire({
-            title: "Account Created Successfully!",
-            text: response.message || "Your account has been created successfully!",
-            icon: "success",
-            confirmButtonText: "Continue",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              window.location.href = "index.html"; // Redirect after success
-            }
-          });
+        // Vérifier si la réponse commence bien par un objet JSON (c'est-à-dire '{' ou '[')
+        if (xhr.responseText.trim().startsWith("{") || xhr.responseText.trim().startsWith("[")) {
+          const response = JSON.parse(xhr.responseText);  // Parse la réponse en JSON
+          // Traitement de la réponse ici
+          if (response.success) {
+            Swal.fire({
+              title: "Account Created Successfully!",
+              text: response.message || "Your account has been created successfully!",
+              icon: "success",
+              confirmButtonText: "Continue",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.href = "index.html"; // Redirect after success
+              }
+            });
+          } else {
+            Swal.fire({
+              title: "Error",
+              text: response.message || "There was an issue creating your account.",
+              icon: "error",
+              confirmButtonText: "Try Again",
+            });
+          }
         } else {
+          console.error("Réponse inattendue : ", xhr.responseText); // Afficher la réponse brute si ce n'est pas du JSON
           Swal.fire({
-            title: "Error",
-            text: response.message || "There was an issue creating your account.",
+            title: "Erreur",
+            text: "La réponse du serveur n'est pas au format JSON.",
             icon: "error",
-            confirmButtonText: "Try Again",
+            confirmButtonText: "Essayer à nouveau",
           });
         }
       } catch (error) {
-        console.error("Error parsing JSON response:", error);
+        console.error("Erreur lors du parsing du JSON :", error);
+        console.log("Réponse du serveur : ", xhr.responseText); // Afficher la réponse brute
         Swal.fire({
-          title: "Error",
-          text: "An unexpected error occurred. Please try again later.",
+          title: "Erreur",
+          text: "Une erreur s'est produite lors du traitement de la réponse.",
           icon: "error",
-          confirmButtonText: "Try Again",
+          confirmButtonText: "Essayer à nouveau",
         });
       }
     } else {
-      console.error("HTTP status error. Status:", xhr.status);
+      console.error("Erreur HTTP. Statut : ", xhr.status);
       Swal.fire({
-        title: "Error",
-        text: "Failed to submit the form. Please check your network and try again.",
+        title: "Erreur",
+        text: "La soumission du formulaire a échoué. Veuillez vérifier votre réseau et réessayer.",
         icon: "error",
-        confirmButtonText: "Try Again",
+        confirmButtonText: "Essayer à nouveau",
       });
     }
   };
+  
 
   xhr.onerror = function () {
     console.error("A network error occurred during the request.");
@@ -274,5 +281,3 @@ document.getElementById("Submit").addEventListener("click", function (event) {
 
   xhr.send();
 });
-
-
