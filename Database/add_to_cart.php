@@ -1,11 +1,10 @@
 <?php
-session_start(); // Start the session
+session_start(); 
 
-require 'database.php'; // Include the database connection
+require 'database.php'; 
 header("Content-Type: application/json");
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    // Check if user_id is set in the session
     if (!isset($_SESSION['user_id'])) {
         echo json_encode(['success' => false, 'message' => 'User not logged in.']);
         exit();

@@ -11,6 +11,7 @@ Validation failed: Missing fields.
 PHP script accessed.
 Validation failed: Missing fields.
 PHP script accessed.
+<<<<<<< HEAD
 Input sanitized. Email: jane.smith@example.com
 User found: jane.smith@example.com
 PHP script accessed.
@@ -46,10 +47,13 @@ Validation failed: Missing fields.
 PHP script accessed.
 Validation failed: Missing fields.
 PHP script accessed.
+=======
+>>>>>>> bf30a791a9267b1b5d2478133f7f0da894287b8b
 Validation failed: Missing fields.
 PHP script accessed.
 Validation failed: Missing fields.
 PHP script accessed.
+<<<<<<< HEAD
 Input sanitized. Email: 
 User not found: 
 PHP script accessed.
@@ -164,3 +168,6 @@ User not found:
 User not found: 
 User not found: 
 User not found: 
+=======
+Validation failed: Missing fields.
+>>>>>>> bf30a791a9267b1b5d2478133f7f0da894287b8b

@@ -64,4 +64,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 } else {
     echo json_encode(['success' => false, 'message' => 'Invalid request.']);
 }
-?>
