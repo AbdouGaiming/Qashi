@@ -3,17 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Products</title>
+    <title>Manage Products - Qashi</title>
     <link rel="stylesheet" href="Style/Sheet.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Script/Seller_Products.js" defer></script>
-    <script>
-        function toggleAddProductForm() {
-            const form = document.querySelector('.add-product-form');
-            form.style.display = form.style.display === 'none' ? 'block' : 'none';
-        }
-    </script>
 </head>
 <body>
     <!-- Top Menu -->
@@ -48,53 +42,71 @@
     <main class="main-content">
         <h1>Manage Products</h1>
         <button class="add-product-button" onclick="toggleAddProductForm()">Add New Product</button>
+        
         <table class="products-table">
             <thead>
                 <tr>
                     <th>Product ID</th>
                     <th>Product Name</th>
-                    <th>Category</th>
+                    <th>Description</th>
                     <th>Price</th>
-                    <th>Stock Status</th>
+                    <th>Stock</th>
+                    <th>Category</th>
+                    <th>Sub Category</th>
+                    <th>Variant Color</th>
+                    <th>Variant Size</th>
+                    <th>Variant Stock</th>
+                    <th>Image</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Products will be loaded here dynamically -->
+                <!-- Products and Variants will be loaded here dynamically -->
             </tbody>
         </table>
 
-        <!-- Add New Product Form -->
-        <div class="add-product-form" id="add-product-form" style="display: none;">
-            <h2>Add New Product</h2>
-            <form id="add-product-form">
-                <!-- General Product Information -->
+        <!-- Add/Edit Product Form -->
+        <div class="add-product-form" id="add-product-form-container" style="display: none;">
+            <h2 id="form-title">Add New Product</h2>
+            <form id="product-form" enctype="multipart/form-data">
+                <!-- Hidden input for product ID (used when updating a product) -->
+                <input type="hidden" id="product-id" name="product_id">
+
+                <!-- Product Name -->
                 <label for="product-name">Product Name</label>
-                <input type="text" id="product-name" name="product-name">
-                <label id="I-product-name" style="display:none; color:red;">Please enter a valid product name</label>
+                <input type="text" id="product-name" name="product_name" required>
+                <label id="I-product-name" style="display:none; color:red;">Please enter a valid product name.</label>
 
+                <!-- Description -->
                 <label for="description">Description</label>
-                <textarea id="description" name="description"></textarea>
-                <label id="I-description" style="display:none; color:red;">Please enter a valid description</label>
+                <textarea id="description" name="description" required></textarea>
+                <label id="I-description" style="display:none; color:red;">Please enter a valid description.</label>
 
+                <!-- Price -->
                 <label for="price">Price</label>
-                <input type="text" id="price" name="price">
-                <label id="I-price" style="display:none; color:red;">Please enter a valid price</label>
+                <input type="text" id="price" name="price" required>
+                <label id="I-price" style="display:none; color:red;">Please enter a valid price.</label>
 
-                <label for="product-image">Product Image</label>
-                <input type="file" id="product-image" name="product-image" accept="image/*">
+                <!-- Image File Upload -->
+                <label for="image-file">Product Image</label>
+                <input type="file" id="image-file" name="image_file" accept="image/*">
+                <label id="I-image-file" style="display:none; color:red;">Please upload a valid image file.</label>
 
-                <!-- Category and Sub-Category -->
+                <!-- Category -->
                 <label for="category">Category</label>
-                <select id="category" name="category">
+                <select id="category" name="category" required>
+                    <option value="">Select Category</option>
                     <option value="men">Men</option>
                     <option value="women">Women</option>
                     <option value="boys">Boys</option>
                     <option value="girls">Girls</option>
                 </select>
+                <label id="I-category" style="display:none; color:red;">Please select a category.</label>
 
+                <!-- Sub Category -->
                 <label for="sub-category">Sub Category</label>
-                <select id="sub-category" name="sub-category">
+                <select id="sub-category" name="sub_category" required>
+                    <option value="">Select Sub Category</option>
                     <option value="hats">Hats</option>
                     <option value="shoes">Shoes</option>
                     <option value="t-shirts">T-Shirts</option>
@@ -109,21 +121,31 @@
                     <option value="pants">Pants</option>
                     <option value="suits">Suits</option>
                 </select>
+                <label id="I-sub-category" style="display:none; color:red;">Please select a sub category.</label>
 
                 <!-- Product Variants -->
                 <h3>Product Variants</h3>
-                <label for="variant-color">Color</label>
-                <input type="text" id="variant-color" name="variant-color">
-                <label id="I-variant-color" style="display:none; color:red;">Please enter a valid color</label>
+                <div id="variants-container">
+                    <div class="variant">
+                        <label for="variant-color">Color</label>
+                        <input type="text" class="variant-color" name="variant_color[]" required>
+                        <label id="I-variant-color" style="display:none; color:red;">Please enter a valid color.</label>
 
-                <label for="variant-size">Size</label>
-                <input type="text" id="variant-size" name="variant-size">
+                        <label for="variant-size">Size</label>
+                        <input type="text" class="variant-size" name="variant_size[]" required>
+                        <label id="I-variant-size" style="display:none; color:red;">Please enter a valid size.</label>
 
-                <label for="variant-stock-quantity">Stock Quantity</label>
-                <input type="text" id="variant-stock-quantity" name="variant-stock-quantity">
-                <label id="I-variant-stock-quantity" style="display:none; color:red;">Please enter a valid stock quantity</label>
+                        <label for="variant-stock-quantity">Stock Quantity</label>
+                        <input type="text" class="variant-stock-quantity" name="variant_stock_quantity[]" required>
+                        <label id="I-variant-stock-quantity" style="display:none; color:red;">Please enter a valid stock quantity.</label>
 
-                <button type="submit" id="add-product-submit">Add Product</button>
+                        <button type="button" class="remove-variant-button">Remove Variant</button>
+                    </div>
+                </div>
+                <button type="button" onclick="addVariant()">Add Another Variant</button>
+
+                <button type="submit" id="submit-button">Add Product</button>
+                <button type="button" onclick="toggleAddProductForm()">Cancel</button>
             </form>
         </div>
     </main>
