@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 15, 2024 at 09:54 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Hôte : 127.0.0.1
+-- Généré le : lun. 06 jan. 2025 à 10:55
+-- Version du serveur : 10.4.32-MariaDB
+-- Version de PHP : 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `qashi`
+-- Base de données : `qashi`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `carts`
+-- Structure de la table `carts`
 --
 
 CREATE TABLE `carts` (
@@ -36,7 +36,7 @@ CREATE TABLE `carts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart_items`
+-- Structure de la table `cart_items`
 --
 
 CREATE TABLE `cart_items` (
@@ -49,7 +49,7 @@ CREATE TABLE `cart_items` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Structure de la table `orders`
 --
 
 CREATE TABLE `orders` (
@@ -63,7 +63,7 @@ CREATE TABLE `orders` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_items`
+-- Structure de la table `order_items`
 --
 
 CREATE TABLE `order_items` (
@@ -77,7 +77,7 @@ CREATE TABLE `order_items` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Structure de la table `products`
 --
 
 CREATE TABLE `products` (
@@ -93,7 +93,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `products`
+-- Déchargement des données de la table `products`
 --
 
 INSERT INTO `products` (`product_id`, `name`, `description`, `price`, `stock`, `category`, `sub_category`, `created_at`, `image_url`) VALUES
@@ -113,7 +113,7 @@ INSERT INTO `products` (`product_id`, `name`, `description`, `price`, `stock`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_attributes`
+-- Structure de la table `product_attributes`
 --
 
 CREATE TABLE `product_attributes` (
@@ -126,7 +126,7 @@ CREATE TABLE `product_attributes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_variants`
+-- Structure de la table `product_variants`
 --
 
 CREATE TABLE `product_variants` (
@@ -140,19 +140,20 @@ CREATE TABLE `product_variants` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `stores`
+-- Structure de la table `stores`
 --
 
 CREATE TABLE `stores` (
   `store_id` int(50) NOT NULL,
   `store_name` varchar(50) NOT NULL,
-  `store_address` varchar(200) NOT NULL
+  `store_address` varchar(200) NOT NULL,
+  `user_id` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `traffic`
+-- Structure de la table `traffic`
 --
 
 CREATE TABLE `traffic` (
@@ -163,7 +164,7 @@ CREATE TABLE `traffic` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
 CREATE TABLE `users` (
@@ -174,11 +175,11 @@ CREATE TABLE `users` (
   `datebirth` date NOT NULL,
   `phone` int(10) NOT NULL,
   `email` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `password` varchar(25) NOT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`user_id`, `user_type`, `lastname`, `firstname`, `datebirth`, `phone`, `email`, `password`) VALUES
@@ -193,35 +194,40 @@ INSERT INTO `users` (`user_id`, `user_type`, `lastname`, `firstname`, `datebirth
 (24, 'Buyer', 'Doe', 'John', '1990-01-01', 1234567890, 'john.doe@example.com', 'password123'),
 (25, 'Buyer', 'Smith', 'Jane', '1985-05-15', 2147483647, 'jane.smith@example.com', 'password123'),
 (26, 'Seller', 'Brown', 'Charlie', '1980-10-20', 2147483647, 'charlie.brown@example.com', 'password123'),
-(27, 'Admin', 'Admin', 'Super', '1975-12-25', 2147483647, 'admin@example.com', 'adminpassword');
+(27, 'Admin', 'Admin', 'Super', '1975-12-25', 2147483647, 'admin@example.com', 'adminpassword'),
+(28, 'Buyer', 'aasz', 'zza', '0000-00-00', 792402863, 'login2@gmail.com', '$2y$10$rJbzG2BS//LGTzLQQ5'),
+(29, 'Buyer', 'aasz', 'zza', '0000-00-00', 792402863, 'login3@gmail.com', '$2y$10$wPXf/Dl56jPnwEbsf/xC5uxAm.GA/7x7.Gso/5sPLTRcsgaDsNwnC'),
+(30, 'Seller', 'drftgyhuji', 'drfghujik', '2003-11-11', 792408811, 'khb@gmail.com', '$2y$10$2Q8uI40xkWPhhp2T1z0Bo..Uu1ovFgstiFxCi7ifLJOoWpTTP3f/.'),
+(31, 'Seller', 'jfgyji', 'rdfthu', '2003-11-11', 765445623, 'Uehdj@gmail.com', '$2y$10$I1bbL6TJR1byVMu5hc/TuOxWBCwRkJpu3WOh5VazIRWEco5zYyfL.'),
+(32, 'Seller', 'EsstLname', 'esstName', '0000-00-00', 792409999, 'Esst3@gmail.com', '$2y$10$twg6JYdaGBC1JBizyW20QeKBS20JrF8MNQzlzazghUoCfodG7XJeW');
 
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `carts`
+-- Index pour la table `carts`
 --
 ALTER TABLE `carts`
   ADD PRIMARY KEY (`cart_id`),
   ADD UNIQUE KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `cart_items`
+-- Index pour la table `cart_items`
 --
 ALTER TABLE `cart_items`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `cart_id` (`cart_id`,`product_id`);
 
 --
--- Indexes for table `orders`
+-- Index pour la table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `order_items`
+-- Index pour la table `order_items`
 --
 ALTER TABLE `order_items`
   ADD PRIMARY KEY (`id`),
@@ -229,147 +235,149 @@ ALTER TABLE `order_items`
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indexes for table `products`
+-- Index pour la table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`);
 
 --
--- Indexes for table `product_attributes`
+-- Index pour la table `product_attributes`
 --
 ALTER TABLE `product_attributes`
   ADD PRIMARY KEY (`attribute_id`),
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indexes for table `product_variants`
+-- Index pour la table `product_variants`
 --
 ALTER TABLE `product_variants`
   ADD PRIMARY KEY (`variant_id`),
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indexes for table `stores`
+-- Index pour la table `stores`
 --
 ALTER TABLE `stores`
-  ADD PRIMARY KEY (`store_id`);
+  ADD PRIMARY KEY (`store_id`),
+  ADD KEY `test` (`user_id`);
 
 --
--- Indexes for table `traffic`
+-- Index pour la table `traffic`
 --
 ALTER TABLE `traffic`
   ADD PRIMARY KEY (`visit_id`);
 
 --
--- Indexes for table `users`
+-- Index pour la table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `carts`
+-- AUTO_INCREMENT pour la table `carts`
 --
 ALTER TABLE `carts`
   MODIFY `cart_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `cart_items`
+-- AUTO_INCREMENT pour la table `cart_items`
 --
 ALTER TABLE `cart_items`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT pour la table `orders`
 --
 ALTER TABLE `orders`
   MODIFY `order_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
--- AUTO_INCREMENT for table `order_items`
+-- AUTO_INCREMENT pour la table `order_items`
 --
 ALTER TABLE `order_items`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT pour la table `products`
 --
 ALTER TABLE `products`
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT for table `product_attributes`
+-- AUTO_INCREMENT pour la table `product_attributes`
 --
 ALTER TABLE `product_attributes`
   MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `product_variants`
+-- AUTO_INCREMENT pour la table `product_variants`
 --
 ALTER TABLE `product_variants`
   MODIFY `variant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT for table `stores`
+-- AUTO_INCREMENT pour la table `stores`
 --
 ALTER TABLE `stores`
-  MODIFY `store_id` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `store_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `traffic`
+-- AUTO_INCREMENT pour la table `traffic`
 --
 ALTER TABLE `traffic`
   MODIFY `visit_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `user_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables déchargées
 --
 
 --
--- Constraints for table `carts`
+-- Contraintes pour la table `carts`
 --
 ALTER TABLE `carts`
   ADD CONSTRAINT `carts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `orders`
+-- Contraintes pour la table `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `order_items`
+-- Contraintes pour la table `order_items`
 --
 ALTER TABLE `order_items`
   ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `product_attributes`
+-- Contraintes pour la table `product_attributes`
 --
 ALTER TABLE `product_attributes`
   ADD CONSTRAINT `product_attributes_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
 
 --
--- Constraints for table `product_variants`
+-- Contraintes pour la table `product_variants`
 --
 ALTER TABLE `product_variants`
   ADD CONSTRAINT `product_variants_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
 
 --
--- Constraints for table `stores`
+-- Contraintes pour la table `stores`
 --
 ALTER TABLE `stores`
-  ADD CONSTRAINT `store_id` FOREIGN KEY (`store_id`) REFERENCES `users` (`user_id`);
+  ADD CONSTRAINT `store_id` FOREIGN KEY (`store_id`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `test` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

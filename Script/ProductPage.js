@@ -37,6 +37,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function renderProductDetails(product) {
+        const paginationElement = document.getElementById("pagination");
+        if (paginationElement) {
+            paginationElement.innerHTML = `<a href="index.html">Home</a> > ${product.name}`;
+        }
         productContainer.innerHTML = `
             <div class="img-card">
                 <img src="${product.image_url}" alt="${product.name}" id="featured-image" />

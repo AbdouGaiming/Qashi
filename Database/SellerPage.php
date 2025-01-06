@@ -1,5 +1,5 @@
 <?php
-require ("database.php");
+require("database.php");
 session_start(); // Start the session
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -26,12 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         exit();
     }
 
-    // Database connection
-    // $conn = mysqli_connect('localhost', 'root', '', 'qashi'); // Replace with your DB credentials
+    // Connect to the database
+    $conn = new mysqli('localhost', 'root', '', 'qashi'); // Update with your DB credentials
 
-    // if (!$conn) {
-    //     die("Connection failed: " . mysqli_connect_error());
-    // }
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
     // Check for duplicate email
     $query = "SELECT * FROM users WHERE email = ?";
@@ -50,20 +50,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     // Insert data into users table
     $userInsertQuery = "INSERT INTO users (firstname, lastname, datebirth, phone, email, password, user_type) 
-                        VALUES ('$firstname', '$lastname', '$dob', '$phone', '$email', '$hashedPassword', '$user_type')";
+                        VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($userInsertQuery);
+    $stmt->bind_param('sssssss', $firstname, $lastname, $dob, $phone, $email, $hashedPassword, $user_type);
 
-    if (mysqli_query($conn, $userInsertQuery)) {
+    if ($stmt->execute()) {
         // Get the new user's ID
-        $userId = mysqli_insert_id($conn);
+        $userId = $stmt->insert_id;
 
         // Insert data into stores table
-        $storeInsertQuery = "INSERT INTO stores (store_name, store_address, user_id) 
-                             VALUES ('$storeName', '$storeAddress', $userId)";
+        $storeInsertQuery = "INSERT INTO stores (store_name, store_address, store_id) 
+                             VALUES (?, ?, ?)";
+        $stmt = $conn->prepare($storeInsertQuery);
+        $stmt->bind_param('ssi', $storeName, $storeAddress, $userId);
 
-        if (mysqli_query($conn, $storeInsertQuery)) {
+        if ($stmt->execute()) {
             // Store user details in the session
             $_SESSION['user_id'] = $userId;
-           
+
             echo json_encode(['success' => true, 'message' => 'Seller account and store created successfully']);
         } else {
             echo json_encode(['success' => false, 'message' => 'Error creating the store']);
@@ -72,9 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         echo json_encode(['success' => false, 'message' => 'Error creating the user account']);
     }
 
-    // Close the database connection
-    mysqli_close($conn);
-} else {
-    echo json_encode(['success' => false, 'message' => 'Invalid request method']);
+    // Close the connection
+    $conn->close();
 }
 ?>

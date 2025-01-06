@@ -1,7 +1,44 @@
 document.addEventListener('DOMContentLoaded', function () {
     loadCartItems(); // Load the cart items when the page loads
     loadProducts();
+    checkUserSession();
 
+    function checkUserSession() {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'Database/GetSession.php', true);
+    
+        xhr.onload = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    try {
+                        const response = JSON.parse(xhr.responseText);
+    
+                        if (response.success) {
+                            // Récupérer l'élément <a> à l'intérieur de #profil-icon
+                            const profileIconLink = document.querySelector('#profil-icon a');
+                            if (profileIconLink) {
+                                // Mettre à jour l'attribut href pour pointer vers User_dashboard.html
+                                profileIconLink.href = 'User_dashboard.html';
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Erreur lors de l’analyse des données JSON:', error);
+                    }
+                } else {
+                    console.error(`Erreur HTTP: ${xhr.status}`);
+                }
+            }
+        };
+    
+        xhr.onerror = function () {
+            console.error('Une erreur réseau s’est produite lors de la vérification de la session utilisateur.');
+        };
+    
+        xhr.send();
+    }
+    
+    
+    
     document.getElementById('searchbtn').addEventListener('click', function () {
         const searchTerm = document.querySelector('.search-input').value;
         searchProducts(searchTerm);

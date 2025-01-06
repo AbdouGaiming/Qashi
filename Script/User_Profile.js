@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     if (!userId) {
                         alert("User is not logged in. Redirecting to login page.");
-                        window.location.href = "login.html";
+                        window.location.href = "Log-in.html";
                     } else {
                         console.log(`User ID: ${userId}, Entry Type: ${entryType}`);
                         // Perform actions based on entry type
@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 } else {
                     alert(response.message || "Failed to fetch session details.");
-                    window.location.href = "login.html"; // Redirect if session invalid
+                    window.location.href = "Log-in.html"; // Redirect if session invalid
                 }
             } catch (error) {
                 console.error("Error parsing JSON response:", error.message);

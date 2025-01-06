@@ -37,9 +37,9 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
                     confirmButtonText: 'Continuer'
                 }).then(() => {
                     if (response.userType === "Buyer") {
-                        window.location.href = 'User_Profile.html';
-                    } else {
                         window.location.href = 'index.html';
+                    } else {
+                        window.location.href = 'Seller_Dashboard.html';
                     }
                 });
             } else {
